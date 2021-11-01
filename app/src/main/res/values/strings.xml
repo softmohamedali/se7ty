@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">myassayment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat_with_client_services">chat with client services</string>
+    <string name="the_support_team_is_happy_to_answer_any_questions_or_complaints">The support team is happy to answer any questions or complaints</string>
+    <string name="our_doctors_are_ready_to_talk_to_you_about_any_medical_problem">Our doctors are ready to talk to you about any medical problem</string>
+    <string name="get_help">get help</string>
+    <string name="ask_doctor">ask doctor</string>
+</resources>
