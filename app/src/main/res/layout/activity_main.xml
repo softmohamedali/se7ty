@@ -27,9 +27,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_my_account_main"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
             android:backgroundTint="@color/none"
             android:minHeight="48dp"
             android:scaleType="centerCrop"
@@ -40,23 +40,31 @@
             app:tint="@color/icon"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/none"
-            android:minHeight="48dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="@+id/imageButton"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic_chat"
-            app:tint="@color/icon"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:backgroundTint="#4D5C5C5C"
+            app:cardCornerRadius="50dp"
+            app:strokeWidth="0dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_my_account_main"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/img_massage_main"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:backgroundTint="@color/none"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_chat"
+                app:tint="@color/icon"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_label_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

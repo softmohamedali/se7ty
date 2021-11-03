@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity(),NavController.OnDestinationChangedListe
         var mynavController=navhostFragment.navController
         mynavController.addOnDestinationChangedListener(this)
 
-        binding.imageButton.setOnClickListener {
+        binding.imgMassageMain.setOnClickListener {
             navController.navigate(R.id.bottomChatFragment)
         }
-//        BottomSheetBehavior.from(binding.root).peekHeight = Resources.getSystem().getDisplayMetrics().heightPixels
-//        BottomSheetBehavior.from(binding.root).state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     override fun onDestinationChanged(

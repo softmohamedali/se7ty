@@ -7,4 +7,7 @@
     <string name="our_doctors_are_ready_to_talk_to_you_about_any_medical_problem">Our doctors are ready to talk to you about any medical problem</string>
     <string name="get_help">get help</string>
     <string name="ask_doctor">ask doctor</string>
+    <string name="booking_date_with_doctor">Booking date with doctor</string>
+    <string name="latest_services">Latest Services</string>
+    <string name="best_doctors">Best Doctors</string>
 </resources>
