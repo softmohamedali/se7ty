@@ -1,4 +1,4 @@
-package com.example.myassayment.ui
+package com.example.myassayment.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,15 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myassayment.R
+import dagger.hilt.android.AndroidEntryPoint
 
-class EmergencyFragment : Fragment() {
+
+@AndroidEntryPoint
+class RegisterFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_emergency, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
 

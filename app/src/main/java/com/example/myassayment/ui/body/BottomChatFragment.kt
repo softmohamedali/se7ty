@@ -1,4 +1,4 @@
-package com.example.myassayment.ui
+package com.example.myassayment.ui.body
 
 import android.app.Dialog
 import android.content.res.Resources
@@ -12,8 +12,9 @@ import com.example.myassayment.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class BottomChatFragment : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

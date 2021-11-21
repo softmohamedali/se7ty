@@ -7,32 +7,32 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.myassayment.ui.MainFragment"
+        android:name="com.example.myassayment.ui.body.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.example.myassayment.ui.AccountFragment"
+        android:name="com.example.myassayment.ui.body.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/bookingFragment"
-        android:name="com.example.myassayment.ui.BookingFragment"
+        android:name="com.example.myassayment.ui.body.BookingFragment"
         android:label="fragment_booking"
         tools:layout="@layout/fragment_booking" />
     <dialog
         android:id="@+id/bottomChatFragment"
-        android:name="com.example.myassayment.ui.BottomChatFragment"
+        android:name="com.example.myassayment.ui.body.BottomChatFragment"
         android:label="fragment_bottom_chat"
         tools:layout="@layout/fragment_bottom_chat" />
     <fragment
         android:id="@+id/emergencyFragment"
-        android:name="com.example.myassayment.ui.EmergencyFragment"
+        android:name="com.example.myassayment.ui.body.EmergencyFragment"
         android:label="fragment_emergency"
         tools:layout="@layout/fragment_emergency" />
     <fragment
         android:id="@+id/servicesFragment"
-        android:name="com.example.myassayment.ui.ServicesFragment"
+        android:name="com.example.myassayment.ui.body.ServicesFragment"
         android:label="fragment_services"
         tools:layout="@layout/fragment_services" />
 </navigation>
