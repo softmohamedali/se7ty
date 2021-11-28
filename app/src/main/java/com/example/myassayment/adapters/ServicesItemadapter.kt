@@ -34,7 +34,7 @@ class ServicesItemadapter (
         holder.view.imgImg.setImageResource(servicestList[position].img!!)
         holder.view.nameTv.text=servicestList[position].name
         holder.itemView.setOnClickListener {
-            itemListener.itemClick(servicestList[position])
+            itemListener.itemClick(servicestList[position],position)
         }
     }
 
@@ -50,7 +50,7 @@ class ServicesItemadapter (
         result.dispatchUpdatesTo(this)
     }
     public interface TodyAppointementItemClick{
-        fun itemClick(services:Sevices)
+        fun itemClick(services:Sevices,pos:Int)
     }
 }
 

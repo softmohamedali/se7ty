@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/booking_nav"
+    app:startDestination="@id/dateFragment">
+
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.example.myassayment.ui.body.booking.DateFragment"
+        android:label="fragment_date"
+        tools:layout="@layout/fragment_date" >
+        <action
+            android:id="@+id/action_dateFragment_to_timeFragment"
+            app:destination="@id/timeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeFragment"
+        android:name="com.example.myassayment.ui.body.booking.TimeFragment"
+        android:label="fragment_time"
+        tools:layout="@layout/fragment_time" />
+</navigation>

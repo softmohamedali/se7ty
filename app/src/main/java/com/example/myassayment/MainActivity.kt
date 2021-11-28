@@ -1,4 +1,4 @@
-    package com.example.myassayment
+package com.example.myassayment
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -19,21 +19,22 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 
-    @AndroidEntryPoint
-class MainActivity : AppCompatActivity(),NavController.OnDestinationChangedListener {
-    private var _binding:ActivityMainBinding?=null
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
+    private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
 
-    private lateinit var navController:NavController
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding=ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navController=findNavController(R.id.fragmentContainerView)
+        navController = findNavController(R.id.fragmentContainerView)
         binding.bottomNavigationView.setupWithNavController(navController)
-        var navhostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        var mynavController=navhostFragment.navController
+        var navhostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        var mynavController = navhostFragment.navController
         mynavController.addOnDestinationChangedListener(this)
 
         binding.imgMassageMain.setOnClickListener {
@@ -41,39 +42,20 @@ class MainActivity : AppCompatActivity(),NavController.OnDestinationChangedListe
         }
     }
 
-    override fun onDestinationChanged(
-        controller: NavController,
-        destination: NavDestination,
-        arguments: Bundle?
-    ) {
-        when(destination.id)
-        {
-            R.id.mainFragment,R.id.bookingFragment,
-            R.id.servicesFragment,R.id.emergencyFragment,R.id.bottomChatFragment ->{
-                binding.constraintLayout.isVisible=true
-            }
-            else ->{
-                binding.constraintLayout.isVisible=false
-            }
-        }
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == Constants.RC_SING_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            if (task.isSuccessful)
-            {
+            if (task.isSuccessful) {
                 try {
                     val account = task.getResult(ApiException::class.java)!!
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
                 }
-            }
-            else
-            {
-                Log.d("fds",task.exception?.message.toString())
+            } else {
+                Log.d("fds", task.exception?.message.toString())
             }
 
         }
@@ -90,8 +72,44 @@ class MainActivity : AppCompatActivity(),NavController.OnDestinationChangedListe
                 }
             }
     }
+
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        when (destination.id) {
+            R.id.mainFragment ->{
+                binding.bottomNavigationView.isVisible=true
+            }
+            R.id.bookingFragment->{
+                binding.bottomNavigationView.isVisible=true
+                binding.tvLabelMain.text="Reservations"
+            }
+            R.id.doctorInfoFragment->{
+                binding.bottomNavigationView.isVisible=true
+                binding.tvLabelMain.text="Doctor page"
+            }
+            R.id.servicesFragment->{
+                binding.bottomNavigationView.isVisible=true
+                binding.tvLabelMain.text="Services"
+            }
+            R.id.emergencyFragment->{
+                binding.bottomNavigationView.isVisible=true
+                binding.tvLabelMain.text="Emergency"
+            }
+            R.id.bottomChatFragment -> {
+
+            }
+            else -> {
+                binding.bottomNavigationView.isVisible=false
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
 }

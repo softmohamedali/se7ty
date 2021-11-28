@@ -4,11 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.body.DoctorInfoFragment">
-
-
+    tools:context=".ui.body.booking.DateFragment">
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView2"
+        android:id="@+id/materialCardView542"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -27,7 +25,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_img"
+                android:id="@+id/card_img_datefrag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -39,7 +37,7 @@
                 app:strokeWidth="1dp">
 
                 <ImageView
-                    android:id="@+id/img_doctorinfo"
+                    android:id="@+id/img_doctorinfo_datefrag"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:scaleType="centerCrop" />
@@ -56,15 +54,15 @@
                 android:textSize="@dimen/_13sdp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/card_img"
-                app:layout_constraintTop_toTopOf="@+id/card_img" />
+                app:layout_constraintStart_toEndOf="@+id/card_img_datefrag"
+                app:layout_constraintTop_toTopOf="@+id/card_img_datefrag" />
 
             <TextView
                 android:id="@+id/spaitalty_doctor_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/card_img"
+                app:layout_constraintBottom_toBottomOf="@+id/card_img_datefrag"
                 app:layout_constraintEnd_toEndOf="@+id/name_title_doctor_info"
                 app:layout_constraintStart_toStartOf="@+id/name_title_doctor_info"
                 app:layout_constraintTop_toBottomOf="@+id/name_title_doctor_info" />
@@ -72,13 +70,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="16dp"
                 android:background="#52ECECEC"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_img">
+                app:layout_constraintTop_toBottomOf="@+id/card_img_datefrag">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -113,67 +111,46 @@
                     app:layout_constraintTop_toBottomOf="@+id/price_doctor_info" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Brief"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-            <TextView
-                android:id="@+id/brief_doctor_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView12"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/book_btn_doctor_info"
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/select_date"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView542"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView542" />
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/book_now"
-        android:textSize="@dimen/_8sdp"
-        android:textStyle="bold"
-        app:cornerRadius="330dp"
-        style="@style/CustomOutLineButton"
+        android:clickable="true"
+        android:src="@drawable/ic_back"
+        app:tint="@color/white"
+        android:backgroundTint="@color/background_tool"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="@string/avilable_on"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/book_btn_doctor_info" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="22 nov 9:00 AM"
-        app:layout_constraintBottom_toBottomOf="@+id/book_btn_doctor_info"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_date_frag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView542"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

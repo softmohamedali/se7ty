@@ -1,12 +1,14 @@
 package com.example.myassayment.ui.body
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassayment.R
@@ -69,8 +71,8 @@ class MainFragment :
 
     private fun setLatestServicesRecy() {
         val list= mutableListOf<Sevices>()
-        list.add(Sevices("Covid_19",R.drawable.img1))
-        list.add(Sevices("blood bank",R.drawable.img22))
+        list.add(Sevices("Covid_19",R.drawable.img22))
+        list.add(Sevices("blood bank",R.drawable.img1))
         latestServicesadapter.setData(list)
         binding.latestServicesRecy.apply {
             adapter=latestServicesadapter
@@ -83,11 +85,20 @@ class MainFragment :
         _binding=null
     }
 
-    override fun itemClick(services: Sevices) {
-    }
+
     override fun itembestDoctorClick(doctor: Doctor) {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDoctorInfoFragment(doctor))
     }
     override fun bookBtnClick(doctor: Doctor) {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToBookDateFragment(doctor))
+    }
+
+    override fun itemClick(services: Sevices, pos: Int) {
+        if (pos==0){
+
+        }else{
+
+        }
     }
 
 }

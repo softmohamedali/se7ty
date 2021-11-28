@@ -11,4 +11,6 @@
     <string name="latest_services">Latest Services</string>
     <string name="best_doctors">Best Doctors</string>
     <string name="book_now">book now</string>
+    <string name="avilable_on">Avilable On</string>
+    <string name="select_date">Select Appointement Date</string>
 </resources>

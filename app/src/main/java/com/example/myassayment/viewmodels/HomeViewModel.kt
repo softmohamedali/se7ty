@@ -9,6 +9,7 @@ import com.example.myassayment.data.remote.FirebaseSource
 import com.example.myassayment.models.Doctor
 import com.example.myassayment.utils.StatusResult
 import com.google.firebase.firestore.QuerySnapshot
+import dagger.hilt.android.internal.Contexts
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -70,6 +71,4 @@ class HomeViewModel @Inject constructor(
         }
 
     }
-
-
 }

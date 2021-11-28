@@ -20,7 +20,8 @@ data class Doctor(
     var country:String?="",
     var city:String?="",
     var spokenLang:String?="",
-    var photo:String?=""
+    var photo:String?="",
+    var doctorsId:String?="doctorid"
 ): Parcelable {
 
     fun fromJson(map:Map<String,Any>)

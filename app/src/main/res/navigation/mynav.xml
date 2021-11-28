@@ -9,7 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="com.example.myassayment.ui.body.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_doctorInfoFragment"
+            app:destination="@id/doctorInfoFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_bookDateFragment"
+            app:destination="@id/bookDateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.myassayment.ui.body.AccountFragment"
@@ -35,4 +42,25 @@
         android:name="com.example.myassayment.ui.body.ServicesFragment"
         android:label="fragment_services"
         tools:layout="@layout/fragment_services" />
+    <fragment
+        android:id="@+id/doctorInfoFragment"
+        android:name="com.example.myassayment.ui.body.DoctorInfoFragment"
+        android:label="fragment_doctor_info"
+        tools:layout="@layout/fragment_doctor_info" >
+        <argument
+            android:name="doctor"
+            app:argType="com.example.myassayment.models.Doctor" />
+        <action
+            android:id="@+id/action_doctorInfoFragment_to_bookDateFragment"
+            app:destination="@id/bookDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDateFragment"
+        android:name="com.example.myassayment.ui.body.booking.BookDateFragment"
+        android:label="fragment_book_date"
+        tools:layout="@layout/fragment_book_date" >
+        <argument
+            android:name="doctor"
+            app:argType="com.example.myassayment.models.Doctor" />
+    </fragment>
 </navigation>

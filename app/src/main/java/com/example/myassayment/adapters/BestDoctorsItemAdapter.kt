@@ -36,7 +36,7 @@ class BestDoctorsItemAdapter (
     override fun onBindViewHolder(holder: Vh, position: Int) {
         holder.view.imgImg.load(bestDoctorList[position].photo){
         }
-        holder.view.nameTv.text=bestDoctorList[position].nameAr
+        holder.view.nameTv.text=bestDoctorList[position].nameEN
         holder.view.spitaltiestTv.text=bestDoctorList[position].spicialty
         holder.itemView.setOnClickListener {
             itemListener.itembestDoctorClick(bestDoctorList[position])

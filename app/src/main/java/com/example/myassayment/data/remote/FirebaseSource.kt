@@ -1,5 +1,6 @@
 package com.example.myassayment.data.remote
 
+import com.example.myassayment.models.Doctor
 import com.example.myassayment.utils.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
@@ -40,6 +41,8 @@ class FirebaseSource @Inject constructor(
 
     fun getDoctors()=firestore.collection(Constants.COLLLECTION_DOCTORS)
 
+    fun getAllDoctorsTimeSchedula(doctorId: String)=firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
+        .document(doctorId).collection("date")
 
 
     //DataStorage
