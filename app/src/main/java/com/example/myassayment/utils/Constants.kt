@@ -8,5 +8,12 @@ object Constants {
 
 
     const val COLLLECTION_DOCTORS="doctors"
+    const val COLLLECTION_USERS="users"
+    const val COLLLECTION_SPEIALITY="specialties"
     const val TIME_SCHEDULA_COLLECTION="myschedula"
+    const val APPOINTEMENT_COLLECTION="appointement"
+    const val USER_APPOINTEMENT_COLLECTION="userAppointement"
+    const val NAME_FIELD_SPETIALTY="spicialty"
+    const val NAME_FIELD_NAMEEN="nameEN"
+    const val NAME_FIELD_NAMEAR="nameAr"
 }

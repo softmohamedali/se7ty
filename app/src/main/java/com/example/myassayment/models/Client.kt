@@ -1,4 +1,8 @@
 package com.example.myassayment.models
 
-data class Client(var name:String?="") {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Client(var name:String?=""):Parcelable {
 }

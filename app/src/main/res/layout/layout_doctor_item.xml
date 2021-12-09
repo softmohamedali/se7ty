@@ -2,56 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.body.DoctorInfoFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_bar_doctorappointement"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
-        android:background="@color/background_tool"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_label_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Doctor Profile"
-            android:textColor="@color/icon"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/btn_back_doctorinfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_back"
-            app:tint="@color/white" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_bar_doctorappointement"
+        app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/background_tool"
         app:strokeWidth="0.5dp">
 
@@ -72,14 +39,14 @@
                 app:strokeWidth="1dp">
 
                 <ImageView
-                    android:id="@+id/img_doctorinfo"
+                    android:id="@+id/img_doctoritem"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:scaleType="centerCrop" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/name_title_doctor_info"
+                android:id="@+id/name_title_doctoritem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -93,14 +60,14 @@
                 app:layout_constraintTop_toTopOf="@+id/card_img" />
 
             <TextView
-                android:id="@+id/spaitalty_doctor_info"
+                android:id="@+id/spaitalty_doctoritem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/card_img"
-                app:layout_constraintEnd_toEndOf="@+id/name_title_doctor_info"
-                app:layout_constraintStart_toStartOf="@+id/name_title_doctor_info"
-                app:layout_constraintTop_toBottomOf="@+id/name_title_doctor_info" />
+                app:layout_constraintEnd_toEndOf="@+id/name_title_doctoritem"
+                app:layout_constraintStart_toStartOf="@+id/name_title_doctoritem"
+                app:layout_constraintTop_toBottomOf="@+id/name_title_doctoritem" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -125,7 +92,7 @@
                     app:tint="@color/background_tool" />
 
                 <TextView
-                    android:id="@+id/price_doctor_info"
+                    android:id="@+id/price_doctoritem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -135,78 +102,56 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/follow_doctor_info"
+                    android:id="@+id/follow_doctoritem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/price_doctor_info"
-                    app:layout_constraintTop_toBottomOf="@+id/price_doctor_info" />
+                    app:layout_constraintStart_toStartOf="@+id/price_doctoritem"
+                    app:layout_constraintTop_toBottomOf="@+id/price_doctoritem" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/textView142"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Brief"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/avalible_from"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toStartOf="@+id/book_btn_doctoritem"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <TextView
-                android:id="@+id/brief_doctor_info"
+                android:id="@+id/avilible_doctoritem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView12"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintEnd_toEndOf="@+id/textView142"
+                app:layout_constraintStart_toStartOf="@+id/textView142"
+                app:layout_constraintTop_toBottomOf="@+id/textView142" />
 
+            <Button
+                android:id="@+id/book_btn_doctoritem"
+                style="@style/CustomOutLineButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/book_an_appointement"
+                android:textSize="@dimen/_8sdp"
+                android:textStyle="bold"
+                app:cornerRadius="330dp"
+                app:layout_constraintBottom_toBottomOf="@+id/avilible_doctoritem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView142" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        android:id="@+id/book_btn_doctor_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/book_now"
-        android:textSize="@dimen/_8sdp"
-        android:textStyle="bold"
-        app:cornerRadius="330dp"
-        style="@style/CustomOutLineButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="@string/avilable_on"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/book_btn_doctor_info" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="22 nov 9:00 AM"
-        app:layout_constraintBottom_toBottomOf="@+id/book_btn_doctor_info"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

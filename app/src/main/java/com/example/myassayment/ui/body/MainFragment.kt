@@ -45,6 +45,9 @@ class MainFragment :
     private fun setUp() {
         setLatestServicesRecy()
         setBestDoctorRecy()
+        binding.cardBookingdateMian.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_doctorAppointementFragment)
+        }
         homeViewModel.getDoctors()
         homeViewModel.doctor.observe(viewLifecycleOwner,{
             when{

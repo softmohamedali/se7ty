@@ -11,7 +11,7 @@
         tools:context=".ui.body.MainFragment">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
+            android:id="@+id/card_bookingdate_mian"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_80sdp"
             android:layout_marginStart="16dp"
@@ -70,9 +70,9 @@
             android:layout_marginTop="32dp"
             android:textAlignment="textStart"
             android:text="@string/latest_services"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+            app:layout_constraintEnd_toEndOf="@+id/card_bookingdate_mian"
+            app:layout_constraintStart_toStartOf="@+id/card_bookingdate_mian"
+            app:layout_constraintTop_toBottomOf="@+id/card_bookingdate_mian" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest_services_recy"

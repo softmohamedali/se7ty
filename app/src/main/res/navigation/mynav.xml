@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_bookDateFragment"
             app:destination="@id/bookDateFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_doctorAppointementFragment"
+            app:destination="@id/doctorAppointementFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -62,5 +65,24 @@
         <argument
             android:name="doctor"
             app:argType="com.example.myassayment.models.Doctor" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorAppointementFragment"
+        android:name="com.example.myassayment.ui.body.DoctorAppointementFragment"
+        android:label="fragment_doctor_appointement"
+        tools:layout="@layout/fragment_doctor_appointement" >
+        <action
+            android:id="@+id/action_doctorAppointementFragment_to_doctorListFragment"
+            app:destination="@id/doctorListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorListFragment"
+        android:name="com.example.myassayment.ui.body.DoctorListFragment"
+        android:label="fragment_doctor_list"
+        tools:layout="@layout/fragment_doctor_list" >
+        <argument
+            android:name="doctorSpetiality"
+            app:argType="string"
+            android:defaultValue=" " />
     </fragment>
 </navigation>

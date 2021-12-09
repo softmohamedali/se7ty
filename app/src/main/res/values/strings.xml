@@ -13,4 +13,24 @@
     <string name="book_now">book now</string>
     <string name="avilable_on">Avilable On</string>
     <string name="select_date">Select Appointement Date</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="fees">Fees</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="log_in">Log In</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="new_to_se7ty">New to se7ty</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="success_booking_date">Success Booking Date</string>
+    <string name="search_speciallity">Search Speciallity</string>
+    <string name="diet_and_nutriation">Diet and Nutriation</string>
+    <string name="pediatrics">Pediatrics</string>
+    <string name="andrology">Andrology</string>
+    <string name="psychiatry">Psychiatry</string>
+    <string name="book_an_appointement">Book an Appointement</string>
+    <string name="avalible_from">Avalible from</string>
+    <string name="search_doctor">Search Doctor</string>
 </resources>

@@ -38,12 +38,15 @@ class DoctorInfoFragment : Fragment() {
         binding.imgDoctorinfo.load(doctor.photo)
         binding.nameTitleDoctorInfo.text=doctor.nameEN
         binding.spaitaltyDoctorInfo.text=doctor.spicialty
-        binding.priceDoctorInfo.text="410 $"
-        binding.followDoctorInfo.text="110 $"
+        binding.priceDoctorInfo.text="${doctor.priceFees} $"
+        binding.followDoctorInfo.text="${doctor.priceFollowUp} $"
         binding.briefDoctorInfo.text=doctor.descriptionEn
         binding.bookBtnDoctorInfo.setOnClickListener {
             val action=DoctorInfoFragmentDirections.actionDoctorInfoFragmentToBookDateFragment(doctor)
             findNavController().navigate(action)
+        }
+        binding.btnBackDoctorinfo.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }

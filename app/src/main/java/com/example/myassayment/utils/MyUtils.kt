@@ -1,5 +1,11 @@
 package com.example.myassayment.utils
 
+import android.content.Context
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.widget.Toast
+import com.example.myassayment.R
+import com.example.myassayment.databinding.LayoutToastSuccessBinding
 import com.google.firebase.firestore.QuerySnapshot
 
 object MyUtils {
@@ -21,5 +27,13 @@ object MyUtils {
         }else{
             return StatusResult.OnError(msg = "No data Found")
         }
+    }
+
+    fun toastSuccessBooking(context: Context){
+        var toast=Toast(context)
+        toast.duration=Toast.LENGTH_LONG
+        toast.view=LayoutInflater.from(context).inflate(R.layout.layout_toast_success,null,false)
+        toast.setGravity(Gravity.CENTER,0,0)
+        toast.show()
     }
 }

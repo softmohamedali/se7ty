@@ -82,28 +82,32 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         when (destination.id) {
             R.id.mainFragment ->{
                 binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
+                binding.tvLabelMain.text="se7ty"
             }
             R.id.bookingFragment->{
                 binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="Reservations"
-            }
-            R.id.doctorInfoFragment->{
-                binding.bottomNavigationView.isVisible=true
-                binding.tvLabelMain.text="Doctor page"
             }
             R.id.servicesFragment->{
                 binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="Services"
             }
             R.id.emergencyFragment->{
                 binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="Emergency"
             }
-            R.id.bottomChatFragment -> {
-
+            R.id.bottomChatFragment->{
+                binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
+                binding.tvLabelMain.text="se7ty"
             }
             else -> {
                 binding.bottomNavigationView.isVisible=false
+                binding.containerBarMain.isVisible=false
             }
         }
     }

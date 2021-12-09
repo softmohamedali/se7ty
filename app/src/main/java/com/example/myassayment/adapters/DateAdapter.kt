@@ -1,5 +1,6 @@
 package com.example.myassayment.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +15,8 @@ class DateAdapter (
 ): RecyclerView.Adapter<DateAdapter.Vh>() {
     private var dateScheduleList= mutableListOf<TimeSchedule>()
     private var itemListener=itemCllickListener
-
+    private var viewsHolder = mutableListOf<DateAdapter.Vh>()
+    private var viewsHolderPosition = mutableListOf<Int>()
     class Vh(var view: LayoutDateItemBinding): RecyclerView.ViewHolder(view.root){
 
         companion object{
@@ -32,9 +34,21 @@ class DateAdapter (
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
+        viewsHolder.add(holder)
+        viewsHolderPosition.add(position)
         holder.view.fromTimeTv.text="From : ${dateScheduleList[position].fromTime}"
         holder.view.toTimeTv.text="To : ${dateScheduleList[position].toTime}"
         holder.view.dateTv.text="Date : ${dateScheduleList[position].date}"
+        holder.itemView.setOnClickListener {view->
+            itemListener.itemClick(dateScheduleList[position])
+            holder.view.rbDateItem.isChecked=true
+            val pos=position
+            viewsHolderPosition.forEach {
+                if (it!=pos){
+                    viewsHolder[it].view.rbDateItem.isChecked=false
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -49,6 +63,6 @@ class DateAdapter (
         result.dispatchUpdatesTo(this)
     }
     public interface DataSchedulementItemClick{
-        fun itemClick(client: Client)
+        fun itemClick(time:TimeSchedule)
     }
 }

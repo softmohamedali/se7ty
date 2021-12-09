@@ -1,7 +1,12 @@
 package com.example.myassayment.data.remote
 
+import com.example.myassayment.models.Appointeiment
+import com.example.myassayment.models.Client
 import com.example.myassayment.models.Doctor
 import com.example.myassayment.utils.Constants
+import com.example.myassayment.utils.Constants.NAME_FIELD_NAMEAR
+import com.example.myassayment.utils.Constants.NAME_FIELD_NAMEEN
+import com.example.myassayment.utils.Constants.NAME_FIELD_SPETIALTY
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -18,7 +23,7 @@ class FirebaseSource @Inject constructor(
     private val googleSingInClient: GoogleSignInClient
 ) {
 
-    // Authentication
+    // ----------------------------------------Authentication-------------------------------------
     val user=auth.currentUser
 
     fun createUsre(email:String, password:String)=
@@ -37,13 +42,50 @@ class FirebaseSource @Inject constructor(
     fun logout()=auth.signOut()
 
     fun resetPassword(email: String)=auth.sendPasswordResetEmail(email)
-    //FireStore
+    //-----------------------------------------------------------------------------------------
+
+
+    //----------------------------------------FireStore----------------------------------------
+
+    fun saveUser(client: Client)=firestore.collection(Constants.COLLLECTION_USERS)
+        .document().set(client)
 
     fun getDoctors()=firestore.collection(Constants.COLLLECTION_DOCTORS)
 
-    fun getAllDoctorsTimeSchedula(doctorId: String)=firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
+    fun getDoctorById(doctorId:String)=
+        firestore.collection(Constants.COLLLECTION_DOCTORS)
+        .document(doctorId).get()
+
+    fun getAllDoctorsTimeSchedula(doctorId: String)=
+        firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
         .document(doctorId).collection("date")
 
+    fun uploadAppointementToDoctor(appointeiment: Appointeiment,doctorId: String)=
+        firestore.collection(Constants.APPOINTEMENT_COLLECTION)
+            .document(doctorId).set(appointeiment)
 
-    //DataStorage
+    fun uploadMyAppointement(appointeiment: Appointeiment,doctorId: String)=
+        firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION)
+            .document(doctorId).set(appointeiment)
+
+    fun getSpeiality()=
+        firestore.collection(Constants.COLLLECTION_SPEIALITY)
+
+    fun getDoctorsWithSpetilst(spetilist:String)=
+        firestore.collection(Constants.COLLLECTION_DOCTORS)
+            .whereEqualTo(NAME_FIELD_SPETIALTY,spetilist)
+
+    fun getDoctorSearchByName(name:String)=
+        firestore.collection(Constants.COLLLECTION_DOCTORS)
+            .orderBy(NAME_FIELD_NAMEEN)
+            .startAt(name.trim())
+            .endAt(name.trim()+"\uF8FF")
+
+    //-------------------------------------------------------------------------------------------
+
+
+    //----------------------------------------DataStorage----------------------------------------
+
+
+    //-------------------------------------------------------------------------------------------
 }

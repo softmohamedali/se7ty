@@ -16,7 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/timeFragment"
-        android:name="com.example.myassayment.ui.body.booking.TimeFragment"
+        android:name="com.example.myassayment.ui.body.booking.ConfirmBookingFragment"
         android:label="fragment_time"
-        tools:layout="@layout/fragment_time" />
+        tools:layout="@layout/fragment_confirm_booking" >
+        <argument
+            android:name="doctor"
+            app:argType="com.example.myassayment.models.Doctor" />
+        <action
+            android:id="@+id/action_timeFragment_to_dateFragment"
+            app:destination="@id/dateFragment" />
+        <argument
+            android:name="time_selected"
+            app:argType="com.example.myassayment.models.TimeSchedule" />
+    </fragment>
 </navigation>

@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.body.booking.BookDateFragment">
+
+
     <com.kofigyan.stateprogressbar.StateProgressBar
         android:id="@+id/progress3"
         android:layout_width="0dp"
@@ -19,7 +21,7 @@
         app:spb_checkStateCompleted="true"
         app:spb_currentStateDescriptionColor="@color/background_tool"
         app:spb_currentStateNumber="one"
-        app:spb_maxStateNumber="three"
+        app:spb_maxStateNumber="two"
         app:spb_stateBackgroundColor="#676666"
         app:spb_stateDescriptionColor="@color/text_color_1"
         app:spb_stateForegroundColor="@color/background_tool"

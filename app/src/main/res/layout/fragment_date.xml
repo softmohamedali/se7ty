@@ -44,7 +44,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/name_title_doctor_info"
+                android:id="@+id/name_title_doctor_info_datafrag"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -58,14 +58,14 @@
                 app:layout_constraintTop_toTopOf="@+id/card_img_datefrag" />
 
             <TextView
-                android:id="@+id/spaitalty_doctor_info"
+                android:id="@+id/spaitalty_doctor_info_datafrag"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/card_img_datefrag"
-                app:layout_constraintEnd_toEndOf="@+id/name_title_doctor_info"
-                app:layout_constraintStart_toStartOf="@+id/name_title_doctor_info"
-                app:layout_constraintTop_toBottomOf="@+id/name_title_doctor_info" />
+                app:layout_constraintEnd_toEndOf="@+id/name_title_doctor_info_datafrag"
+                app:layout_constraintStart_toStartOf="@+id/name_title_doctor_info_datafrag"
+                app:layout_constraintTop_toBottomOf="@+id/name_title_doctor_info_datafrag" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -90,7 +90,7 @@
                     app:tint="@color/background_tool" />
 
                 <TextView
-                    android:id="@+id/price_doctor_info"
+                    android:id="@+id/price_doctor_info_datafrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -100,15 +100,15 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/follow_doctor_info"
+                    android:id="@+id/follow_doctor_info_datafrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/price_doctor_info"
-                    app:layout_constraintTop_toBottomOf="@+id/price_doctor_info" />
+                    app:layout_constraintStart_toStartOf="@+id/price_doctor_info_datafrag"
+                    app:layout_constraintTop_toBottomOf="@+id/price_doctor_info_datafrag" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,21 +126,6 @@
         app:layout_constraintStart_toStartOf="@+id/materialCardView542"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView542" />
 
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:src="@drawable/ic_back"
-        app:tint="@color/white"
-        android:backgroundTint="@color/background_tool"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_date_frag"
         android:layout_width="0dp"
@@ -152,5 +137,19 @@
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_next_screen_datefrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/background_tool"
+        android:clickable="true"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
