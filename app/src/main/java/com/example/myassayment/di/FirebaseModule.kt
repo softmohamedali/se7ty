@@ -1,6 +1,8 @@
 package com.example.myassayment.di
 
 import android.content.Context
+import android.provider.Settings.Global.getString
+import com.example.myassayment.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -33,9 +35,11 @@ object FirebaseModule {
     @Provides
     @Singleton
     fun provideGoogleSingInOption()= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken("584970573241-oiq1atiqaqa4lls270v9crssasc9bhut.apps.googleusercontent.com")
+        .requestIdToken("584970573241-rvo163tlttiorstne154uekq6fgo7as6.apps.googleusercontent.com")
         .requestEmail()
         .build()
+
+
 
     @Provides
     @Singleton

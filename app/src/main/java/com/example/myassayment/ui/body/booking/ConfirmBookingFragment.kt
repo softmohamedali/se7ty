@@ -47,7 +47,7 @@ class ConfirmBookingFragment : Fragment() {
                 it is StatusResult.OnSuccess ->{
                     binding.pbConfirmBooking.isVisible=false
                     binding.floorConfirmfrag.isVisible=true
-                    MyUtils.toastSuccessBooking(requireActivity())
+                    MyUtils.toastSuccessBooking(requireActivity(),"Success Booking Date")
                 }
                 it is StatusResult.OnError ->{
                     binding.pbConfirmBooking.isVisible=false
@@ -73,7 +73,7 @@ class ConfirmBookingFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.fabConfirmConfirmfrag.setOnClickListener {
-            bookingViewModel.bookDate(doctor.doctorsId!!,timeSelected,)
+            bookingViewModel.bookDate(doctor,timeSelected,)
         }
     }
 

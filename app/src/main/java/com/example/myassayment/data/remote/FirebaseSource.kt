@@ -1,8 +1,6 @@
 package com.example.myassayment.data.remote
 
-import com.example.myassayment.models.Appointeiment
-import com.example.myassayment.models.Client
-import com.example.myassayment.models.Doctor
+import com.example.myassayment.models.*
 import com.example.myassayment.utils.Constants
 import com.example.myassayment.utils.Constants.NAME_FIELD_NAMEAR
 import com.example.myassayment.utils.Constants.NAME_FIELD_NAMEEN
@@ -15,7 +13,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class FirebaseSource @Inject constructor(
     val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
@@ -24,7 +24,7 @@ class FirebaseSource @Inject constructor(
 ) {
 
     // ----------------------------------------Authentication-------------------------------------
-    val user=auth.currentUser
+    fun user()=auth.currentUser
 
     fun createUsre(email:String, password:String)=
         auth.createUserWithEmailAndPassword(email,password)
@@ -34,7 +34,7 @@ class FirebaseSource @Inject constructor(
 
     fun loginGoogle()=googleSingInClient.signInIntent
 
-    fun firebaseAuthWithGoogle(idToken: String): Task<AuthResult> {
+    fun firebaseSinginWithGoogle(idToken: String): Task<AuthResult> {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         return auth.signInWithCredential(credential)
     }
@@ -47,8 +47,14 @@ class FirebaseSource @Inject constructor(
 
     //----------------------------------------FireStore----------------------------------------
 
-    fun saveUser(client: Client)=firestore.collection(Constants.COLLLECTION_USERS)
-        .document().set(client)
+    fun saveUser(client: Client):Task<Void>{
+        val ref=firestore.collection(Constants.COLLLECTION_USERS)
+            .document(auth.currentUser!!.uid)
+        var mclient=client
+        mclient.clientId=ref.id
+        return ref.set(mclient)
+    }
+
 
     fun getDoctors()=firestore.collection(Constants.COLLLECTION_DOCTORS)
 
@@ -60,13 +66,14 @@ class FirebaseSource @Inject constructor(
         firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
         .document(doctorId).collection("date")
 
-    fun uploadAppointementToDoctor(appointeiment: Appointeiment,doctorId: String)=
-        firestore.collection(Constants.APPOINTEMENT_COLLECTION)
-            .document(doctorId).set(appointeiment)
 
-    fun uploadMyAppointement(appointeiment: Appointeiment,doctorId: String)=
-        firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION)
-            .document(doctorId).set(appointeiment)
+    fun uploadMyAppointement(appointeiment: Appointeiment):Task<Void>{
+        val ref=firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION).document()
+        val appo=appointeiment
+        appo.appointeimentId=ref.id
+            return ref.set(appo)
+    }
+
 
     fun getSpeiality()=
         firestore.collection(Constants.COLLLECTION_SPEIALITY)
@@ -81,6 +88,39 @@ class FirebaseSource @Inject constructor(
             .startAt(name.trim())
             .endAt(name.trim()+"\uF8FF")
 
+    fun upLoadMassage()=firestore.collection("massages")
+        .document()
+
+    fun getUserInfo()=firestore.collection(Constants.COLLLECTION_USERS)
+        .document(auth.currentUser!!.uid).get()
+
+    fun getUserApponitement()=firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION)
+        .whereEqualTo("clientId",auth.currentUser?.uid)
+
+    fun delteAppointement(appoId:String)=firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION)
+        .document(appoId).delete()
+
+    fun addTimeSchedula(time: TimeSchedule,doctorId: String):Task<Void>{
+        val ref=firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
+            .document(doctorId).collection("date").document()
+        val mytime=time
+        mytime.id=ref.id
+        return ref.set(mytime)
+    }
+
+    fun deleteTimeSchedula(timeSchId:String,doctorId: String)=firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
+        .document(doctorId).collection("date").document(timeSchId).delete()
+
+    fun getLapTests()=firestore.collection(Constants.COLLLECTION_LAPTESTS)
+
+    fun getSearchLapTests(name:String)=firestore.collection(Constants.COLLLECTION_LAPTESTS)
+        .orderBy("name")
+        .startAt(name.trim())
+        .endAt(name.trim()+"\uf8ff")
+
+    fun bookLapTests(lapTestsBook:BookTest)=firestore.collection(Constants.COLLECTION_BOOKINGlAPTESTS)
+
+    fun getAllBranches(area:String,city:String)=firestore.collection(Constants.COLLLECTION_BRANCHES)
     //-------------------------------------------------------------------------------------------
 
 

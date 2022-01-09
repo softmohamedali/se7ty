@@ -1,4 +1,4 @@
-package com.example.myassayment.ui.body
+package com.example.myassayment.ui.body.bottomcheat
 
 import android.app.Dialog
 import android.content.res.Resources
@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.navigation.fragment.findNavController
 import com.example.myassayment.R
+import com.example.myassayment.databinding.FragmentBottomChatBinding
+import com.example.myassayment.databinding.FragmentDoctorInfoBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -16,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BottomChatFragment : BottomSheetDialogFragment() {
-
+    private var _binding: FragmentBottomChatBinding?=null
+    private val binding get() = _binding!!
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bottomSheetDialog=super.onCreateDialog(savedInstanceState)
         bottomSheetDialog.setOnShowListener {
@@ -32,9 +36,22 @@ class BottomChatFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_chat, container, false)
+        _binding=FragmentBottomChatBinding.inflate(layoutInflater)
+        setUp()
+        return binding.root
     }
 
+    private fun setUp() {
+        binding.btnGethelpBootomchat.setOnClickListener {
+            findNavController().navigate(R.id.action_bottomChatFragment_to_getHelpFragment)
+        }
+        binding.btnAskdoctorBottomchat.setOnClickListener {
+            findNavController().navigate(R.id.action_bottomChatFragment_to_askDoctorFragment)
+        }
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
+    }
 }

@@ -6,19 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myassayment.R
-import com.example.myassayment.databinding.FragmentCovidBinding
-import com.example.myassayment.databinding.FragmentDoctorInfoBinding
+import com.example.myassayment.databinding.FragmentPreviousBookingBinding
+import com.example.myassayment.databinding.FragmentSettingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CovidFragment : Fragment() {
-    private var _binding: FragmentCovidBinding?=null
+class SettingFragment : Fragment() {
+    private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding=FragmentCovidBinding.inflate(layoutInflater)
+        _binding= FragmentSettingBinding.inflate(layoutInflater)
         setUp()
         return binding.root
     }
@@ -29,7 +30,7 @@ class CovidFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
 
 }

@@ -63,47 +63,78 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tv_upcomm"
             style="@style/CustomText_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:textAlignment="textStart"
-            android:text="@string/latest_services"
+            android:visibility="gone"
+            android:text="@string/my_upcomming_booking"
             app:layout_constraintEnd_toEndOf="@+id/card_bookingdate_mian"
             app:layout_constraintStart_toStartOf="@+id/card_bookingdate_mian"
             app:layout_constraintTop_toBottomOf="@+id/card_bookingdate_mian" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/upcom_booking_recy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_upcomm" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/CustomText_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/latest_services"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="@+id/card_bookingdate_mian"
+            app:layout_constraintStart_toStartOf="@+id/card_bookingdate_mian"
+            app:layout_constraintTop_toBottomOf="@+id/upcom_booking_recy" />
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/latest_services_recy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/textView7"
             style="@style/CustomText_2"
-            android:textAlignment="textStart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/best_doctors"
-            app:layout_constraintEnd_toEndOf="@+id/latest_services_recy"
-            app:layout_constraintStart_toStartOf="@+id/latest_services_recy"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/latest_services_recy" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/best_doctor_recy"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView7"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>

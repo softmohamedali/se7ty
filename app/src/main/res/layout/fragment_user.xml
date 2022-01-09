@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.body.user.UserFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_bar_userfrag"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/background_tool"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_label_userfrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Doctor Profile"
+                android:textColor="@color/icon"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_back_userfrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back"
+                app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/container_bar_userfrag">
+
+            <TextView
+                android:id="@+id/textfViewk10"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/email_for_contact"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="@+id/tv_email_userfrag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email_userfrag" />
+
+            <EditText
+                android:id="@+id/et_email_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_your_email"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/textfViewk10"
+                app:layout_constraintStart_toStartOf="@+id/textfViewk10"
+                app:layout_constraintTop_toBottomOf="@+id/textfViewk10" />
+
+            <TextView
+                android:id="@+id/textfViefwk10"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/phone_number_for_contact"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="@+id/tv_email_userfrag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email_userfrag" />
+
+            <EditText
+                android:id="@+id/et_phone_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_your_phone_number"
+                app:layout_constraintEnd_toEndOf="@+id/textfViefwk10"
+                app:layout_constraintStart_toStartOf="@+id/textfViefwk10"
+                app:layout_constraintTop_toBottomOf="@+id/textfViefwk10" />
+
+            <TextView
+                android:id="@+id/textViewk10"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/age"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/textfViewk10"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone_userfrag" />
+
+            <EditText
+                android:id="@+id/et_age_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_your_age"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/textViewk10"
+                app:layout_constraintStart_toStartOf="@+id/textViewk10"
+                app:layout_constraintTop_toBottomOf="@+id/textViewk10" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edit_text543"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/select_gender"
+                app:layout_constraintBottom_toBottomOf="@+id/et_age_userfrag"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/textViewk10">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_gender_userfrag"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_savel_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/save"
+                app:backgroundTint="@color/background_tool"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_pickposition_userfrag"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/et_age_userfrag"
+                app:layout_constraintTop_toBottomOf="@+id/et_position_userfrag"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/tv_name_userfrag"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="@+id/textView40"
+                app:layout_constraintHorizontal_bias="0.541"
+                app:layout_constraintStart_toStartOf="@+id/textView40"
+                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+            <TextView
+                android:id="@+id/tv_email_userfrag"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="@+id/tv_name_userfrag"
+                app:layout_constraintStart_toStartOf="@+id/tv_name_userfrag"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_userfrag" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="213dp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="@string/this_informaition_will_be_shared"
+                android:textColor="#6A6A6A"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textfViewk1t0"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/diseases_you_suffer_from"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="@+id/tv_email_userfrag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_age_userfrag" />
+
+            <EditText
+                android:id="@+id/et_deases_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_back_msg"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/enter_here"
+                android:lines="4"
+                android:padding="8dp"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@null"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="@+id/textfViewk1t0"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textfViewk1t0"
+                app:layout_constraintTop_toBottomOf="@+id/textfViewk1t0" />
+
+            <TextView
+                android:id="@+id/textwqViewkd10"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Click Plus Icon to pick position (optional)"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/et_deases_userfrag"
+                app:layout_constraintTop_toBottomOf="@+id/et_deases_userfrag" />
+
+            <EditText
+                android:id="@+id/et_position_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="@string/your_position"
+                app:layout_constraintEnd_toStartOf="@+id/btn_pickposition_userfrag"
+                app:layout_constraintStart_toEndOf="@+id/textwqViewkd10"
+                app:layout_constraintStart_toStartOf="@+id/textwqViewkd10"
+                app:layout_constraintTop_toBottomOf="@+id/textwqViewkd10" />
+
+            <ImageButton
+                android:id="@+id/btn_pickposition_userfrag"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/cicrcler_btn"
+                android:src="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="@+id/et_position_userfrag"
+                app:layout_constraintEnd_toEndOf="@+id/textwqViewkd10"
+                app:layout_constraintTop_toTopOf="@+id/et_position_userfrag"
+                app:tint="@color/background_tool" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/background_tool"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/btn_savel_userfrag"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_name_userfrag" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mynav"
     app:startDestination="@id/mainFragment">
-
+    <action
+        android:id="@+id/action_to_loginFragment"
+        app:destination="@id/logInFragment" />
+    <action
+        android:id="@+id/action_to_accountFragment"
+        app:destination="@id/accountFragment" />
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.myassayment.ui.body.MainFragment"
@@ -19,32 +24,76 @@
         <action
             android:id="@+id/action_mainFragment_to_doctorAppointementFragment"
             app:destination="@id/doctorAppointementFragment" />
+        <action
+            android:id="@+id/action_mainFragment_self"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_showBookingDetailsFragment"
+            app:destination="@id/showBookingDetailsFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/accountFragment"
-        android:name="com.example.myassayment.ui.body.AccountFragment"
+        android:name="com.example.myassayment.ui.body.user.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </dialog>
     <fragment
         android:id="@+id/bookingFragment"
-        android:name="com.example.myassayment.ui.body.BookingFragment"
+        android:name="com.example.myassayment.ui.body.bookingfragment.BookingFragment"
         android:label="fragment_booking"
-        tools:layout="@layout/fragment_booking" />
+        tools:layout="@layout/fragment_booking" >
+        <action
+            android:id="@+id/action_bookingFragment_to_doctorAppointementFragment"
+            app:destination="@id/doctorAppointementFragment" />
+        <action
+            android:id="@+id/action_bookingFragment_self"
+            app:destination="@id/bookingFragment" />
+        <action
+            android:id="@+id/action_bookingFragment_to_showBookingDetailsFragment"
+            app:destination="@id/showBookingDetailsFragment" />
+        <action
+            android:id="@+id/action_bookingFragment_to_previousBookingFragment"
+            app:destination="@id/previousBookingFragment" />
+    </fragment>
     <dialog
         android:id="@+id/bottomChatFragment"
-        android:name="com.example.myassayment.ui.body.BottomChatFragment"
+        android:name="com.example.myassayment.ui.body.bottomcheat.BottomChatFragment"
         android:label="fragment_bottom_chat"
-        tools:layout="@layout/fragment_bottom_chat" />
+        tools:layout="@layout/fragment_bottom_chat" >
+        <action
+            android:id="@+id/action_bottomChatFragment_to_getHelpFragment"
+            app:destination="@id/getHelpFragment" />
+        <action
+            android:id="@+id/action_bottomChatFragment_to_askDoctorFragment"
+            app:destination="@id/askDoctorFragment" />
+    </dialog>
     <fragment
         android:id="@+id/emergencyFragment"
         android:name="com.example.myassayment.ui.body.EmergencyFragment"
         android:label="fragment_emergency"
-        tools:layout="@layout/fragment_emergency" />
+        tools:layout="@layout/fragment_emergency" >
+        <action
+            android:id="@+id/action_emergencyFragment_to_getHelpFragment"
+            app:destination="@id/getHelpFragment" />
+        <action
+            android:id="@+id/action_emergencyFragment_to_waitEmergencyFragment"
+            app:destination="@id/waitEmergencyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/servicesFragment"
-        android:name="com.example.myassayment.ui.body.ServicesFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.ServicesFragment"
         android:label="fragment_services"
-        tools:layout="@layout/fragment_services" />
+        tools:layout="@layout/fragment_services" >
+        <action
+            android:id="@+id/action_servicesFragment_to_lapTestFragment"
+            app:destination="@id/lapTestFragment" />
+        <action
+            android:id="@+id/action_servicesFragment_to_covid19Fragment"
+            app:destination="@id/covid19Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/doctorInfoFragment"
         android:name="com.example.myassayment.ui.body.DoctorInfoFragment"
@@ -84,5 +133,171 @@
             android:name="doctorSpetiality"
             app:argType="string"
             android:defaultValue=" " />
+        <action
+            android:id="@+id/action_doctorListFragment_to_doctorInfoFragment"
+            app:destination="@id/doctorInfoFragment" />
+        <action
+            android:id="@+id/action_doctorListFragment_to_bookDateFragment"
+            app:destination="@id/bookDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getHelpFragment"
+        android:name="com.example.myassayment.ui.body.bottomcheat.GetHelpFragment"
+        android:label="fragment_get_help"
+        tools:layout="@layout/fragment_get_help" />
+    <fragment
+        android:id="@+id/askDoctorFragment"
+        android:name="com.example.myassayment.ui.body.bottomcheat.AskDoctorFragment"
+        android:label="fragment_ask_doctor"
+        tools:layout="@layout/fragment_ask_doctor" />
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.myassayment.ui.auth.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.example.myassayment.ui.auth.SingUpFragment"
+        android:label="fragment_sing_up"
+        tools:layout="@layout/fragment_sing_up" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.myassayment.ui.auth.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
+    <fragment
+        android:id="@+id/waitEmergencyFragment"
+        android:name="com.example.myassayment.ui.body.WaitEmergencyFragment"
+        android:label="fragment_wait_emergency"
+        tools:layout="@layout/fragment_wait_emergency" >
+        <action
+            android:id="@+id/action_waitEmergencyFragment_to_cancleEmrgencyFragment"
+            app:destination="@id/cancleEmrgencyFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/cancleEmrgencyFragment"
+        android:name="com.example.myassayment.ui.body.CancleEmrgencyFragment"
+        android:label="fragment_cancle_emrgency"
+        tools:layout="@layout/fragment_cancle_emrgency" >
+        <action
+            android:id="@+id/action_cancleEmrgencyFragment_to_emergencyFragment"
+            app:destination="@id/emergencyFragment"
+            app:popUpTo="@id/emergencyFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/showBookingDetailsFragment"
+        android:name="com.example.myassayment.ui.body.bookingfragment.ShowBookingDetailsFragment"
+        android:label="fragment_show_booking_details"
+        tools:layout="@layout/fragment_show_booking_details" >
+        <argument
+            android:name="myappointement"
+            app:argType="com.example.myassayment.models.Appointeiment" />
+        <action
+            android:id="@+id/action_showBookingDetailsFragment_to_cancleBookingFragment"
+            app:destination="@id/cancleBookingFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <dialog
+        android:id="@+id/cancleBookingFragment"
+        android:name="com.example.myassayment.ui.body.bookingfragment.CancleBookingFragment"
+        android:label="fragment_cancle_booking"
+        tools:layout="@layout/fragment_cancle_booking" >
+        <argument
+            android:name="myappointemetn"
+            app:argType="com.example.myassayment.models.Appointeiment" />
+        <action
+            android:id="@+id/action_cancleBookingFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment"
+            app:popUpTo="@id/bookingFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.myassayment.ui.body.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_pickPositionFragment"
+            app:destination="@id/pickPositionFragment" />
+        <argument
+            android:name="lang"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue=" " />
+        <argument
+            android:name="lati"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue=" " />
+    </fragment>
+    <fragment
+        android:id="@+id/pickPositionFragment"
+        android:name="com.example.myassayment.ui.body.user.PickPositionFragment"
+        android:label="fragment_pick_position"
+        tools:layout="@layout/fragment_pick_position" >
+        <action
+            android:id="@+id/action_pickPositionFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:popUpTo="@id/userFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/previousBookingFragment"
+        android:name="com.example.myassayment.ui.body.bookingfragment.PreviousBookingFragment"
+        android:label="fragment_previous_booking"
+        tools:layout="@layout/fragment_previous_booking" />
+    <fragment
+        android:id="@+id/locatonsFragment"
+        android:name="com.example.myassayment.ui.body.LocatonsFragment"
+        android:label="fragment_locatons"
+        tools:layout="@layout/fragment_locatons" >
+        <action
+            android:id="@+id/action_locatonsFragment_to_doctorInfoFragment"
+            app:destination="@id/doctorInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lapTestFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.LapTestFragment"
+        android:label="fragment_lap_test"
+        tools:layout="@layout/fragment_lap_test" >
+        <action
+            android:id="@+id/action_lapTestFragment_to_addMoreLapTestsDetailsFragment"
+            app:destination="@id/addMoreLapTestsDetailsFragment"
+            app:popUpTo="@id/servicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/covid19Fragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.Covid19Fragment"
+        android:label="fragment_covid19"
+        tools:layout="@layout/fragment_covid19" />
+    <fragment
+        android:id="@+id/addMoreLapTestsDetailsFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.AddMoreLapTestsDetailsFragment"
+        android:label="fragment_add_more_lap_tests_details"
+        tools:layout="@layout/fragment_add_more_lap_tests_details" >
+        <argument
+            android:name="cheakedLaptests"
+            app:argType="com.example.myassayment.models.ListLapTests" />
+        <action
+            android:id="@+id/action_addMoreLapTestsDetailsFragment_to_choseLapFragment"
+            app:destination="@id/choseLapFragment"
+            app:popUpTo="@id/servicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choseLapFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.ChoseLapFragment"
+        android:label="fragment_chose_lap"
+        tools:layout="@layout/fragment_chose_lap" >
+        <argument
+            android:name="bookTest"
+            app:argType="com.example.myassayment.models.BookTest" />
     </fragment>
 </navigation>

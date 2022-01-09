@@ -9,6 +9,10 @@
         android:title="booking"
         android:icon="@drawable/ic_timer"/>
     <item
+        android:id="@+id/locatonsFragment"
+        android:title="Locations"
+        android:icon="@drawable/ic_location"/>
+    <item
         android:id="@+id/servicesFragment"
         android:title="services"
         android:icon="@drawable/ic_services"/>

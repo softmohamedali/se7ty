@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.body.serviesesfragment.AddMoreLapTestsDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_bar_laptestmore"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_label_laptest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/lap_tests"
+                    android:textColor="@color/icon"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_close_addlaptests"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#ffffff" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.kofigyan.stateprogressbar.StateProgressBar
+                android:id="@+id/progress3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_bar_laptestmore"
+                app:spb_animateToCurrentProgressState="true"
+                app:spb_checkStateCompleted="true"
+                app:spb_currentStateDescriptionColor="@color/background_tool"
+                app:spb_currentStateNumber="two"
+                app:spb_maxStateNumber="three"
+                app:spb_stateBackgroundColor="#676666"
+                app:spb_stateDescriptionColor="@color/text_color_1"
+                app:spb_stateForegroundColor="@color/background_tool"
+                app:spb_stateNumberBackgroundColor="@color/white"
+                app:spb_stateNumberForegroundColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textew6r"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/add_more_details_about_your_lap_test_analysis"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="@+id/progress3"
+                app:layout_constraintStart_toStartOf="@+id/progress3"
+                app:layout_constraintTop_toBottomOf="@+id/progress3" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/our_agent_will_call_you_shortly_fro_your"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/textew6r"
+                app:layout_constraintStart_toStartOf="@+id/textew6r"
+                app:layout_constraintTop_toBottomOf="@+id/textew6r" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_myself_lapmore"
+                style="@style/CustomOutLineButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/background_tool"
+                android:text="@string/my_self"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/_20sdp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/textView27"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+            <Button
+                android:id="@+id/btn_others_lapmore"
+                style="@style/CustomOutLineButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/others"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_myself_lapmore"
+                app:layout_constraintEnd_toEndOf="@+id/textView27"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/btn_myself_lapmore" />
+
+
+            <EditText
+                android:id="@+id/et_ptientname_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_testlip_back"
+                android:ems="10"
+                android:hint="@string/add_patient_name"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView27"
+                app:layout_constraintStart_toStartOf="@+id/textView27"
+                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="193dp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/patient_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/textView27"
+                app:layout_constraintStart_toStartOf="@+id/textView27"
+                app:layout_constraintTop_toBottomOf="@+id/btn_myself_lapmore" />
+
+            <TextView
+                android:id="@+id/textView3t6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/mobile_number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/et_ptientname_lapmore"
+                app:layout_constraintStart_toStartOf="@+id/et_ptientname_lapmore"
+                app:layout_constraintTop_toBottomOf="@+id/et_ptientname_lapmore" />
+
+            <EditText
+                android:id="@+id/et_phone_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_testlip_back"
+                android:ems="10"
+                android:hint="@string/add_mobile_number"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/textView3t6"
+                app:layout_constraintStart_toStartOf="@+id/textView3t6"
+                app:layout_constraintTop_toBottomOf="@+id/textView3t6" />
+
+            <TextView
+                android:id="@+id/textViewt3t6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/chose_test_location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/et_phone_lapmore"
+                app:layout_constraintStart_toStartOf="@+id/et_phone_lapmore"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone_lapmore" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_atranche_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_athome_lapmore"
+                app:layout_constraintEnd_toEndOf="@+id/textView27"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@+id/btn_athome_lapmore"
+                app:strokeColor="@color/background_tool"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/atranche_lapmore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ic_branch_morelap"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_branch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.26"
+                        app:tint="@color/background_tool" />
+
+                    <TextView
+                        android:id="@+id/tv_branch_morelap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/at_branch"
+                        android:textColor="@color/background_tool"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/ic_branch_morelap"
+                        app:layout_constraintStart_toStartOf="@+id/ic_branch_morelap"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_branch_morelap" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_athome_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/background_tool"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/textViewt3t6"
+                app:layout_constraintTop_toBottomOf="@+id/textViewt3t6"
+                app:strokeColor="@color/background_tool"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/athome_lapmore"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ic_home_morelap"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_home"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.26"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_home_morelap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/at_home"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/ic_home_morelap"
+                        app:layout_constraintStart_toStartOf="@+id/ic_home_morelap"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_home_morelap" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/textViyewt3t6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/chose_city"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewt3t6"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewt3t6"
+                app:layout_constraintTop_toBottomOf="@+id/btn_athome_lapmore" />
+
+            <Spinner
+                android:id="@+id/sp_city_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_testlip_back"
+                app:layout_constraintEnd_toEndOf="@+id/textViyewt3t6"
+                app:layout_constraintStart_toStartOf="@+id/textViyewt3t6"
+                app:layout_constraintTop_toBottomOf="@+id/textViyewt3t6" />
+
+            <TextView
+                android:id="@+id/textViyfxewt3t6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/chose_area"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/sp_city_lapmore"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/sp_city_lapmore"
+                app:layout_constraintTop_toBottomOf="@+id/sp_city_lapmore" />
+
+            <Spinner
+                android:id="@+id/sp_area_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/edit_text_testlip_back"
+                app:layout_constraintBottom_toTopOf="@+id/textViewd3t6"
+                app:layout_constraintEnd_toEndOf="@+id/textViyfxewt3t6"
+                app:layout_constraintStart_toStartOf="@+id/textViyfxewt3t6"
+                app:layout_constraintTop_toBottomOf="@+id/textViyfxewt3t6" />
+
+
+            <TextView
+                android:id="@+id/textViewd3t6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/patient_address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintEnd_toEndOf="@+id/sp_area_lapmore"
+                app:layout_constraintStart_toStartOf="@+id/sp_area_lapmore"
+                app:layout_constraintTop_toBottomOf="@+id/sp_area_lapmore" />
+
+            <EditText
+                android:id="@+id/et_patientadress_lapmore"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/edit_text_testlip_back"
+                android:ems="10"
+                android:hint="@string/add_patient_address"
+                android:paddingStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewd3t6"
+                app:layout_constraintStart_toStartOf="@+id/textViewd3t6"
+                app:layout_constraintTop_toBottomOf="@+id/textViewd3t6" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addmorelap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/background_tool"
+        android:clickable="true"
+        android:src="@drawable/ic_cheak"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+</androidx.constraintlayout.widget.ConstraintLayout>

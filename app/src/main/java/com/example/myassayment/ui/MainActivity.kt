@@ -1,4 +1,4 @@
-package com.example.myassayment
+package com.example.myassayment.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +11,10 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.myassayment.R
 import com.example.myassayment.databinding.ActivityMainBinding
 import com.example.myassayment.utils.Constants
+import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.viewmodels.AuthViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -24,10 +26,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
-
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = findNavController(R.id.fragmentContainerView)
@@ -40,38 +42,18 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         binding.imgMassageMain.setOnClickListener {
             navController.navigate(R.id.bottomChatFragment)
         }
-    }
-
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == Constants.RC_SING_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            if (task.isSuccessful) {
-                try {
-                    val account = task.getResult(ApiException::class.java)!!
-                    firebaseAuthWithGoogle(account.idToken!!)
-                } catch (e: ApiException) {
-                }
-            } else {
-                Log.d("fds", task.exception?.message.toString())
+        binding.imgMyAccountMain.setOnClickListener {
+            if (authViewModel.currntuser()==null)
+            {
+                navController.navigate(R.id.action_to_loginFragment)
             }
-
+            else{
+                navController.navigate(R.id.action_to_accountFragment)
+            }
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        authViewModel.auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
 
-                } else {
-
-                }
-            }
-    }
 
 
     override fun onDestinationChanged(
@@ -85,22 +67,27 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="se7ty"
             }
-            R.id.bookingFragment->{
+            R.id.bookingFragment ->{
                 binding.bottomNavigationView.isVisible=true
                 binding.containerBarMain.isVisible=true
-                binding.tvLabelMain.text="Reservations"
+                binding.tvLabelMain.text="Booking"
             }
-            R.id.servicesFragment->{
+            R.id.servicesFragment ->{
                 binding.bottomNavigationView.isVisible=true
                 binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="Services"
             }
-            R.id.emergencyFragment->{
+            R.id.emergencyFragment ->{
                 binding.bottomNavigationView.isVisible=true
                 binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="Emergency"
             }
-            R.id.bottomChatFragment->{
+            R.id.bottomChatFragment ->{
+                binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
+                binding.tvLabelMain.text="se7ty"
+            }
+            R.id.locatonsFragment->{
                 binding.bottomNavigationView.isVisible=true
                 binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="se7ty"

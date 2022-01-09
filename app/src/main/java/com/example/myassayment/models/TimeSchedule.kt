@@ -11,4 +11,6 @@ data class TimeSchedule (
     var date:String?="",
     var user:Client?=Client()
 ):Parcelable{
+
+    fun getAllDate():String="day:${this.date},time:${fromTime}"
 }

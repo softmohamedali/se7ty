@@ -1,14 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.body.AccountFragment">
+    android:layout_height="wrap_content"
+    tools:context=".ui.body.user.AccountFragment"
+    android:background="#00000000">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_gravity="center"
+        android:background="#52ECECEC"
+        app:cardCornerRadius="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#52ECECEC">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/imageView7"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="1000dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/img_user_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_emergency" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_user_name_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="TextView"
+                android:textColor="#292929"
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="#292929"
+                app:layout_constraintEnd_toEndOf="@+id/tv_user_name_account"
+                app:layout_constraintStart_toStartOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+            <ImageView
+                android:id="@+id/img_finish_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_chek"
+                app:layout_constraintStart_toStartOf="@+id/view3"
+                app:layout_constraintTop_toBottomOf="@+id/view3"
+                app:tint="#FF0000" />
+
+            <TextView
+                android:id="@+id/tv_finich_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/finish_setting_up_your_account"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_finish_account"
+                app:layout_constraintEnd_toEndOf="@+id/view3"
+                app:layout_constraintStart_toEndOf="@+id/img_finish_account"
+                app:layout_constraintTop_toTopOf="@+id/img_finish_account" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_note"
+                app:layout_constraintStart_toStartOf="@+id/img_finish_account"
+                app:layout_constraintTop_toBottomOf="@+id/img_finish_account"
+                app:tint="@color/background_tool" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:text="@string/my_electronic_medical_record"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                app:layout_constraintEnd_toEndOf="@+id/tv_finich_account"
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="#292929"
+                app:layout_constraintEnd_toEndOf="@+id/textView28"
+                app:layout_constraintStart_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+            <ImageView
+                android:id="@+id/img_setting_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_setting"
+                app:layout_constraintStart_toStartOf="@+id/view4"
+                app:layout_constraintTop_toBottomOf="@+id/view4"
+                app:tint="@color/background_tool" />
+
+            <TextView
+                android:id="@+id/tv_setting_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/app_setting"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_setting_account"
+                app:layout_constraintEnd_toEndOf="@+id/view4"
+                app:layout_constraintStart_toEndOf="@+id/img_setting_account"
+                app:layout_constraintTop_toTopOf="@+id/img_setting_account" />
+
+            <ImageView
+                android:id="@+id/img_logout_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintStart_toStartOf="@+id/img_setting_account"
+                app:layout_constraintTop_toBottomOf="@+id/img_setting_account" />
+
+            <TextView
+                android:id="@+id/tv_logout_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/log_out"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_logout_account"
+                app:layout_constraintEnd_toEndOf="@+id/tv_setting_account"
+                app:layout_constraintStart_toStartOf="@+id/tv_setting_account"
+                app:layout_constraintTop_toTopOf="@+id/img_logout_account" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login_logfrag"
+                style="@style/CustomOutLineButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="@color/none"
+                android:drawableStart="@drawable/ic_phone"
+                android:text="@string/call_coustomer_support"
+                android:textColor="#FF0000"
+                app:cornerRadius="50dp"
+                android:textSize="@dimen/_10sdp"
+                app:drawableTint="#FF0000"
+                app:layout_constraintEnd_toEndOf="@+id/tv_logout_account"
+                app:layout_constraintStart_toStartOf="@+id/img_logout_account"
+                app:layout_constraintTop_toBottomOf="@+id/tv_logout_account"
+                app:strokeColor="#FF0000"
+                app:strokeWidth="1dp" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/privacy_police"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_login_logfrag"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btn_login_logfrag"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login_logfrag" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/terms_or_seveices"
+                android:textColor="#292929"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_login_logfrag"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/btn_login_logfrag"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login_logfrag" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

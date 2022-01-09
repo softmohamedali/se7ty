@@ -14,7 +14,7 @@
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:cardElevation="5dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         app:strokeWidth="0.5dp"
         app:strokeColor="@color/background_tool"
         app:layout_constraintEnd_toEndOf="parent"

@@ -34,7 +34,7 @@ class DoctorAppointementFragment : Fragment(),SpeitlityItemAdapter.SpitialItemCl
     }
 
     private fun setUp() {
-        binding.btnBackDoctorinfo.setOnClickListener {
+        binding.btnBackDoctoriappo.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.btnSpetilityAndrology.setOnClickListener {

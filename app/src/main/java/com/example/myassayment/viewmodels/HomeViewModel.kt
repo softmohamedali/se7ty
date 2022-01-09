@@ -22,6 +22,7 @@ class HomeViewModel @Inject constructor(
     private var _doctors:MutableLiveData<StatusResult<MutableList<Doctor>>> = MutableLiveData()
 
     val doctor:MutableLiveData<StatusResult<MutableList<Doctor>>> =_doctors
+    val user=firebase.user()
 
     fun getDoctors() {
         if (hasInternetConnection()) {

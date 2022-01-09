@@ -98,11 +98,13 @@ class DoctorListFragment : Fragment(),DoctorItemAdapter.BestDoctorItemClick {
     }
 
     override fun itembestDoctorClick(doctor: Doctor) {
-
+        val action=DoctorListFragmentDirections.actionDoctorListFragmentToDoctorInfoFragment(doctor)
+        findNavController().navigate(action)
     }
 
     override fun bookBtnClick(doctor: Doctor) {
-
+        val action=DoctorListFragmentDirections.actionDoctorListFragmentToBookDateFragment(doctor)
+        findNavController().navigate(action)
     }
 
 }
