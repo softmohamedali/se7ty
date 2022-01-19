@@ -38,7 +38,7 @@ class ShowBookingDetailsFragment : Fragment() {
         }
         binding.nameTitleShowApponitement.text=myAppointement.doctor?.nameEN
         binding.spaitaltyShowApponitement.text=myAppointement.doctor?.spicialty
-        binding.tvDateShowApponitement.text=myAppointement.timeBook
+        binding.tvDateShowApponitement.text=myAppointement.timeSchedule?.getAllDate()
         binding.tvPymentstatusShowApponitement.text="unPay"
         binding.bookingFeesShowApponitement.text="Bookin fees ${myAppointement.doctor?.priceFees}"
         binding.btnCopyCode.setOnClickListener {
@@ -49,6 +49,9 @@ class ShowBookingDetailsFragment : Fragment() {
             val action=ShowBookingDetailsFragmentDirections
                 .actionShowBookingDetailsFragmentToCancleBookingFragment(myAppointement)
             findNavController().navigate(action)
+        }
+        binding.btnBackMyuppcomming.setOnClickListener {
+            findNavController().popBackStack()
         }
 
     }

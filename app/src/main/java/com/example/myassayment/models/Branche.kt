@@ -5,6 +5,8 @@ data class Branche(
     var img:String?="",
     var name:String?="",
     var pricebook:String?="",
-    var priceDHome:String?=""
+    var priceDHome:String?="",
+    var city:String?="",
+    var area:String?=""
 ) {
 }

@@ -1,14 +1,14 @@
-package com.example.myassayment.ui.body.serviesesfragment
+package com.example.myassayment.ui.body.serviesesfragment.lap
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myassayment.R
@@ -17,19 +17,17 @@ import com.example.myassayment.helpers.Validation
 import com.example.myassayment.models.BookTest
 import com.example.myassayment.models.LapTests
 import com.example.myassayment.utils.Constants
-import com.example.myassayment.viewmodels.ServicesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AddMoreLapTestsDetailsFragment : Fragment() {
     private var _binding: FragmentAddMoreLapTestsDetailsBinding?=null
     private val binding get() = _binding!!
-    private val servicesViewModel by viewModels<ServicesViewModel>()
     private val navArgs by navArgs<AddMoreLapTestsDetailsFragmentArgs>()
     private lateinit var mlaptests:MutableList<LapTests>
     private var mforWho=Constants.FOR_ME
-    private val mcity:String?=null
-    private val marea:String?=null
+    private var mcity:String?=null
+    private var marea:String?=null
     private var mlocation:String=Constants.FROM_HOME
 
     override fun onCreateView(
@@ -48,8 +46,9 @@ class AddMoreLapTestsDetailsFragment : Fragment() {
 
 
 
-    fun setUpview()
-    {
+    fun setUpview() {
+        binding.etPatientadressLapmore.isVisible=true
+        binding.tvAddressAddmore.isVisible=true
         binding.btnMyselfLapmore.setOnClickListener {
             changeViewForWhoStatus(Constants.FOR_ME)
         }
@@ -57,41 +56,54 @@ class AddMoreLapTestsDetailsFragment : Fragment() {
             changeViewForWhoStatus(Constants.FOR_OTHERS)
         }
         binding.btnAthomeLapmore.setOnClickListener {
-            mlocation=Constants.FROM_HOME
+            mlocation = Constants.FROM_HOME
             changeViewlocationStatus(Constants.FROM_HOME)
         }
         binding.btnAtrancheLapmore.setOnClickListener {
-            mlocation=Constants.FROM_BRANCH
+            mlocation = Constants.FROM_BRANCH
             changeViewlocationStatus(Constants.FROM_BRANCH)
         }
         binding.fabAddmorelap.setOnClickListener {
-            val action=AddMoreLapTestsDetailsFragmentDirections
-                .actionAddMoreLapTestsDetailsFragmentToChoseLapFragment(BookTest())
-            findNavController().navigate(action)
+            saveData()
         }
         binding.imgCloseAddlaptests.setOnClickListener {
             findNavController().popBackStack()
         }
-        val arrayCity= arrayOf("fd","sdf","jky")
-        val adapter=ArrayAdapter<String>(requireContext(),android.R.layout.simple_list_item_1,arrayCity)
-        binding.spAreaLapmore.adapter=adapter
-        binding.spCityLapmore.adapter=adapter
+        val arrayCity = arrayOf("fd", "sdf", "jky")
+        mcity = arrayCity[0]
+        marea = arrayCity[0]
+        val adapter =
+            ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, arrayCity)
+        binding.spAreaLapmore.adapter = adapter
+        binding.spCityLapmore.adapter = adapter
+        binding.spCityLapmore.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                mcity = p0?.getItemAtPosition(p2).toString()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
+        binding.spAreaLapmore.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                marea = p0?.getItemAtPosition(p2).toString()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
     }
 
     private fun saveData() {
         val patientName=binding.etPtientnameLapmore.text.toString()
         val patientPhhone=binding.etPhoneLapmore.text.toString()
         val patientAddress=binding.etPatientadressLapmore.text.toString()
-        val patientcity=mcity
-        val patientarea=marea
         val patientLocation=mlocation
         val forWho=mforWho
 
-        if(!Validation.isFeildIsEmpty(binding.etPatientadressLapmore)||
-            !Validation.isFeildIsEmpty(binding.etPhoneLapmore)||
-            !Validation.isFeildIsEmpty(binding.etPtientnameLapmore)||
-            patientcity.isNullOrEmpty()||
-            patientarea.isNullOrEmpty()||
+        if(Validation.isFeildIsEmpty(binding.etPatientadressLapmore)||
+            Validation.isFeildIsEmpty(binding.etPhoneLapmore)||
+            Validation.isFeildIsEmpty(binding.etPtientnameLapmore)||
+            mcity.isNullOrEmpty()||
+            marea.isNullOrEmpty()||
             patientLocation.trim().isEmpty()||
             forWho.trim().isEmpty()) {
             return
@@ -100,10 +112,11 @@ class AddMoreLapTestsDetailsFragment : Fragment() {
             patientName = patientName,
             patientAddres = patientAddress,
             patientPhone = patientPhhone,
-            city = patientcity,
-            area = patientarea,
+            city = mcity,
+            area = marea,
             location = patientLocation,
-            forWho = forWho
+            forWho = forWho,
+            lapTests = mlaptests
         )
         val action=AddMoreLapTestsDetailsFragmentDirections
             .actionAddMoreLapTestsDetailsFragmentToChoseLapFragment(bookTests)
@@ -141,6 +154,8 @@ class AddMoreLapTestsDetailsFragment : Fragment() {
             binding.tvBranchMorelap.setTextColor(mainColor)
             binding.icHomeMorelap.setColorFilter(secColor)
             binding.icBranchMorelap.setColorFilter(mainColor)
+            binding.etPatientadressLapmore.isVisible=true
+            binding.tvAddressAddmore.isVisible=true
         }else{
             binding.athomeLapmore.setBackgroundColor(secColor)
             binding.atrancheLapmore.setBackgroundColor(mainColor)
@@ -148,6 +163,8 @@ class AddMoreLapTestsDetailsFragment : Fragment() {
             binding.tvHomeMorelap.setTextColor(mainColor)
             binding.icBranchMorelap.setColorFilter(secColor)
             binding.icHomeMorelap.setColorFilter(mainColor)
+            binding.etPatientadressLapmore.isVisible=false
+            binding.tvAddressAddmore.isVisible=false
         }
     }
 

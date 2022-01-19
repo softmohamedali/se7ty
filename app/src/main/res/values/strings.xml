@@ -89,7 +89,7 @@
     <string name="select_your_country">Select your Country</string>
     <string name="city">City</string>
     <string name="select_your_city">Select Your City</string>
-    <string name="save">Save</string>
+
     <string name="age">Age</string>
     <string name="enter_your_age">enter your Age</string>
     <string name="gendre">Gendre</string>
@@ -103,7 +103,7 @@
     <string name="select_gender">Select Gender</string>
     <string name="pick_up_position">pick Up Position</string>
     <string name="nears_doctors">Nears Doctors</string>
-    <string name="my_upcomming_booking">My Upcomming Booking</string>
+
     <string name="lap_tests">Lap Tests</string>
     <string name="search_for_tests">Search for tests</string>
     <string name="which_tests_you_are_searching_for">Which tests you are searching for ?</string>
@@ -122,5 +122,19 @@
     <string name="chose_area">Chose Area</string>
     <string name="patient_address">Patient Address</string>
     <string name="add_patient_address">Add Patient Address</string>
+    <string name="my_upcomming_booking">My Upcomming Booking</string>
+    <string name="no_branches_found">No Branches Found</string>
+    <string name="my_electrical_medical_record">My Electrical Medical Record</string>
+    <string name="height_in_cm">Height (in cm)</string>
+    <string name="weight_in_kg">Weight (in kg)</string>
+    <string name="blod_type_optinal">Blod Type(optinal)</string>
+    <string name="material_status">Material Status</string>
+    <string name="do_you_drink_alchol">Do You Drink Alchol ?</string>
+    <string name="are_you_smoker">Are You Smoker ?</string>
+    <string name="save">Save</string>
+    <string name="medication">Medication</string>
+    <string name="prescription">Prescription</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="medical_test">Medical Test</string>
 
 </resources>

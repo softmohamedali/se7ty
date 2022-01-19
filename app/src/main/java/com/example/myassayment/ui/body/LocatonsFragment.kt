@@ -94,7 +94,6 @@ class LocatonsFragment : Fragment() {
         doctors.forEach {
 
             val clusterMarker=ClusterMarker(
-                it.photo!!,
                 it
             )
             mClusterMarkers.add(clusterMarker)

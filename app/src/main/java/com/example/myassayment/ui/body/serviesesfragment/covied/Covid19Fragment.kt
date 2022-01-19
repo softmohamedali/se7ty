@@ -1,4 +1,4 @@
-package com.example.myassayment.ui.body.serviesesfragment
+package com.example.myassayment.ui.body.serviesesfragment.covied
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,63 +7,61 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myassayment.R
 import com.example.myassayment.adapters.LapTestsItemAdapter
-import com.example.myassayment.databinding.FragmentLapTestBinding
-import com.example.myassayment.databinding.FragmentServicesBinding
+import com.example.myassayment.databinding.FragmentCovid19Binding
 import com.example.myassayment.models.LapTests
 import com.example.myassayment.models.ListLapTests
+import com.example.myassayment.ui.body.serviesesfragment.lap.LapTestFragmentDirections
 import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.ServicesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class LapTestFragment : Fragment(), LapTestsItemAdapter.LapTestsItemClick{
-    private var _binding: FragmentLapTestBinding?=null
+class Covid19Fragment : Fragment(),LapTestsItemAdapter.LapTestsItemClick {
+    private var _binding: FragmentCovid19Binding?=null
     private val binding get() = _binding!!
-    private val lapTestsAdapter by lazy { LapTestsItemAdapter(this) }
     private val servicesViewModel by viewModels<ServicesViewModel>()
+    private val lapTestsAdapter by lazy { LapTestsItemAdapter(this) }
     private lateinit var listLapTests:ListLapTests
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= FragmentLapTestBinding.inflate(layoutInflater)
+        _binding= FragmentCovid19Binding.inflate(layoutInflater)
         setUp()
         return binding.root
     }
 
     private fun setUp() {
-        binding.tvCountLaptests.text="Lap tests cheaked : 0"
+        binding.tvCountCovied.text="Lap tests cheaked : 0"
         setUpRecy()
-        servicesViewModel.getAllLapTests()
+        servicesViewModel.getAllCoviedTests()
         setUpObservers()
-        binding.fabGotoAddmoreLaptests.setOnClickListener {
+        binding.fabGotoAddmoreCovied.setOnClickListener {
             if (lapTestsAdapter.getLapTestCheaked().size>0)
             {
-                val action=LapTestFragmentDirections
-                    .actionLapTestFragmentToAddMoreLapTestsDetailsFragment(listLapTests)
+                val action= Covid19FragmentDirections
+                    .actionCovid19FragmentToAddMoreLapTestsDetailsFragment(listLapTests)
                 findNavController().navigate(action)
+            }else{
+                Toast.makeText(requireContext(), "Please Select Lap Test", Toast.LENGTH_SHORT).show()
             }
         }
         binding.imgCloseLaptests.setOnClickListener {
             findNavController().popBackStack()
         }
-//        binding.etSearchTestsLaptest.doOnTextChanged { text, start, before, count ->
-//            servicesViewModel.getSearchLapTests(text.toString())
-//        }
+
     }
 
     private fun setUpObservers() {
         lifecycleScope.launchWhenStarted {
-            servicesViewModel.lapTests.collect {
+            servicesViewModel.coviedTests.collect {
                 when{
                     it is StatusResult.OnLoading->{
                         showProgress(true)
@@ -82,15 +80,15 @@ class LapTestFragment : Fragment(), LapTestsItemAdapter.LapTestsItemClick{
     }
 
     private fun setUpRecy() {
-        binding.recyTests.apply {
+        binding.recyCovied.apply {
             adapter=lapTestsAdapter
-            layoutManager=LinearLayoutManager(requireActivity(),RecyclerView.VERTICAL,false)
+            layoutManager= LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL,false)
         }
     }
 
     private fun showProgress(show:Boolean)
     {
-        binding.myprogressLaptests.isVisible=show
+        binding.myprogressCovied.isVisible=show
     }
     override fun onDestroy() {
         super.onDestroy()
@@ -98,8 +96,7 @@ class LapTestFragment : Fragment(), LapTestsItemAdapter.LapTestsItemClick{
     }
 
     override fun itemupLapTestsClick(lapTests:MutableList<LapTests>) {
-        binding.tvCountLaptests.text="Lap tests cheaked : ${lapTests.size}"
+        binding.tvCountCovied.text="Lap tests cheaked : ${lapTests.size}"
         listLapTests= ListLapTests(lapTests)
     }
-
 }

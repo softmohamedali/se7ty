@@ -71,6 +71,9 @@ class AccountFragment : DialogFragment() {
         binding.tvFinichAccount.setOnClickListener {
             findNavController().navigate(R.id.action_accountFragment_to_userFragment)
         }
+        binding.tvMyelectricalAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_accountFragment_to_myElecticalRecordFragment)
+        }
     }
 
     private fun setUpObsevers() {

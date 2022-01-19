@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_accountFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_myElecticalRecordFragment"
+            app:destination="@id/myElecticalRecordFragment" />
     </dialog>
     <fragment
         android:id="@+id/bookingFragment"
@@ -265,7 +268,7 @@
     </fragment>
     <fragment
         android:id="@+id/lapTestFragment"
-        android:name="com.example.myassayment.ui.body.serviesesfragment.LapTestFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.lap.LapTestFragment"
         android:label="fragment_lap_test"
         tools:layout="@layout/fragment_lap_test" >
         <action
@@ -275,12 +278,17 @@
     </fragment>
     <fragment
         android:id="@+id/covid19Fragment"
-        android:name="com.example.myassayment.ui.body.serviesesfragment.Covid19Fragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.covied.Covid19Fragment"
         android:label="fragment_covid19"
-        tools:layout="@layout/fragment_covid19" />
+        tools:layout="@layout/fragment_covid19" >
+        <action
+            android:id="@+id/action_covid19Fragment_to_addMoreLapTestsDetailsFragment"
+            app:destination="@id/addMoreLapTestsDetailsFragment"
+            app:popUpTo="@id/servicesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addMoreLapTestsDetailsFragment"
-        android:name="com.example.myassayment.ui.body.serviesesfragment.AddMoreLapTestsDetailsFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.lap.AddMoreLapTestsDetailsFragment"
         android:label="fragment_add_more_lap_tests_details"
         tools:layout="@layout/fragment_add_more_lap_tests_details" >
         <argument
@@ -293,11 +301,41 @@
     </fragment>
     <fragment
         android:id="@+id/choseLapFragment"
-        android:name="com.example.myassayment.ui.body.serviesesfragment.ChoseLapFragment"
+        android:name="com.example.myassayment.ui.body.serviesesfragment.lap.ChoseLapFragment"
         android:label="fragment_chose_lap"
         tools:layout="@layout/fragment_chose_lap" >
         <argument
             android:name="bookTest"
             app:argType="com.example.myassayment.models.BookTest" />
     </fragment>
+    <fragment
+        android:id="@+id/myElecticalRecordFragment"
+        android:name="com.example.myassayment.ui.body.user.MyElecticalRecordFragment"
+        android:label="fragment_my_electical_record"
+        tools:layout="@layout/fragment_my_electical_record" >
+        <action
+            android:id="@+id/action_myElecticalRecordFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
+        <action
+            android:id="@+id/action_myElecticalRecordFragment_to_medicationFragment"
+            app:destination="@id/medicationFragment" />
+        <action
+            android:id="@+id/action_myElecticalRecordFragment_to_medicalTestFragment"
+            app:destination="@id/medicalTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.example.myassayment.ui.body.user.PersonalInfoFragment"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" />
+    <fragment
+        android:id="@+id/medicationFragment"
+        android:name="com.example.myassayment.ui.body.user.MedicationFragment"
+        android:label="fragment_medication"
+        tools:layout="@layout/fragment_medication" />
+    <fragment
+        android:id="@+id/medicalTestFragment"
+        android:name="com.example.myassayment.ui.body.user.MedicalTestFragment"
+        android:label="fragment_medical_test"
+        tools:layout="@layout/fragment_medical_test" />
 </navigation>

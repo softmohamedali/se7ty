@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.body.serviesesfragment.AddMoreLapTestsDetailsFragment">
+    tools:context=".ui.body.serviesesfragment.lap.AddMoreLapTestsDetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -62,6 +62,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/container_bar_laptestmore"
                 app:spb_animateToCurrentProgressState="true"
@@ -338,14 +339,15 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/edit_text_testlip_back"
-                app:layout_constraintBottom_toTopOf="@+id/textViewd3t6"
+                app:layout_constraintBottom_toTopOf="@+id/tv_address_addmore"
                 app:layout_constraintEnd_toEndOf="@+id/textViyfxewt3t6"
                 app:layout_constraintStart_toStartOf="@+id/textViyfxewt3t6"
-                app:layout_constraintTop_toBottomOf="@+id/textViyfxewt3t6" />
+                app:layout_constraintTop_toBottomOf="@+id/textViyfxewt3t6"
+                app:layout_constraintVertical_bias="0.0" />
 
 
             <TextView
-                android:id="@+id/textViewd3t6"
+                android:id="@+id/tv_address_addmore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -367,9 +369,9 @@
                 android:hint="@string/add_patient_address"
                 android:paddingStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textViewd3t6"
-                app:layout_constraintStart_toStartOf="@+id/textViewd3t6"
-                app:layout_constraintTop_toBottomOf="@+id/textViewd3t6" />
+                app:layout_constraintEnd_toEndOf="@+id/tv_address_addmore"
+                app:layout_constraintStart_toStartOf="@+id/tv_address_addmore"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address_addmore" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

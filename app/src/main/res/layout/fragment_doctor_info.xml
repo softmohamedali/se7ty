@@ -196,14 +196,16 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="@string/avilable_on"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/book_btn_doctor_info" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tv_avilabelon_doctorinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="22 nov 9:00 AM"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/book_btn_doctor_info"
         app:layout_constraintEnd_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />

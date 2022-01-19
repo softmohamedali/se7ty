@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.body.serviesesfragment.ChoseLapFragment">
+    tools:context=".ui.body.serviesesfragment.lap.ChoseLapFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_bar_choselap"
@@ -41,14 +41,37 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/progress3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_bar_choselap"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="@color/background_tool"
+        app:spb_currentStateNumber="three"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#676666"
+        app:spb_stateDescriptionColor="@color/text_color_1"
+        app:spb_stateForegroundColor="@color/background_tool"
+        app:spb_stateNumberBackgroundColor="@color/white"
+        app:spb_stateNumberForegroundColor="@color/white" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_choselap"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container_bar_choselap" />
+        app:layout_constraintTop_toBottomOf="@+id/progress3" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
@@ -73,5 +96,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_error_choselap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_branches_found"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_bar_choselap" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

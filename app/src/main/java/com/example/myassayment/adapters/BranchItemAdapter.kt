@@ -41,9 +41,10 @@ class BranchItemAdapter(
     override fun onBindViewHolder(holder: Vh, position: Int) {
         viewsHolder.add(holder)
         viewsHolderPosition.add(position)
-        holder.view.pricevisitPrebooking.text="${branchList[position].pricebook} E.G"
+        holder.view.pricevisitPrebooking.text="Home Visit : ${branchList[position].priceDHome} E.G"
         holder.view.nameBranch.text=branchList[position].name
         holder.view.imgBranch.load(branchList[position].img)
+        holder.view.tvPriceBranche.text="${branchList[position].pricebook} E.G"
         holder.itemView.setOnClickListener {view->
             itemListener.itemClick(branchList[position])
             holdercolor(holder,true)

@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myassayment.R
 import com.example.myassayment.databinding.FragmentBookDateBinding
@@ -57,7 +58,9 @@ class BookDateFragment : Fragment(),NavController.OnDestinationChangedListener {
     }
 
     private fun setUpView() {
-
+        binding.btnBackBookdate.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroy() {

@@ -11,6 +11,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -65,7 +66,7 @@ class FirebaseSource @Inject constructor(
     fun getAllDoctorsTimeSchedula(doctorId: String)=
         firestore.collection(Constants.TIME_SCHEDULA_COLLECTION)
         .document(doctorId).collection("date")
-
+            .orderBy("date",Query.Direction.DESCENDING)
 
     fun uploadMyAppointement(appointeiment: Appointeiment):Task<Void>{
         val ref=firestore.collection(Constants.USER_APPOINTEMENT_COLLECTION).document()
@@ -112,6 +113,8 @@ class FirebaseSource @Inject constructor(
         .document(doctorId).collection("date").document(timeSchId).delete()
 
     fun getLapTests()=firestore.collection(Constants.COLLLECTION_LAPTESTS)
+
+    fun getCoviedTests()=firestore.collection(Constants.COLLLECTION_COVIEDTESTS)
 
     fun getSearchLapTests(name:String)=firestore.collection(Constants.COLLLECTION_LAPTESTS)
         .orderBy("name")

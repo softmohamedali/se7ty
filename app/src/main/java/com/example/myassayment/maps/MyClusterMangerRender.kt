@@ -32,10 +32,6 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 
 import com.bumptech.glide.Glide
 
-
-
-
-
 class MyClusterMangerRender(
     var context: Activity,
     map: GoogleMap,
@@ -59,7 +55,7 @@ class MyClusterMangerRender(
 
     override fun onClusterItemRendered(clusterItem: ClusterMarker, marker: Marker) {
         super.onClusterItemRendered(clusterItem, marker)
-        Glide.with(context).load(clusterItem.img).into(img)
+        Glide.with(context).load(clusterItem.doctor.photo).into(img)
     }
     override fun onBeforeClusterItemRendered(item: ClusterMarker, markerOptions: MarkerOptions) {
         initImageSizeIfNeed()
@@ -77,6 +73,13 @@ class MyClusterMangerRender(
     }
 
 }
+
+
+
+
+
+
+
 
 
 

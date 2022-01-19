@@ -28,6 +28,10 @@ class ServicesViewModel @Inject constructor(
         MutableStateFlow(null)
     val lapTests:StateFlow<StatusResult<MutableList<LapTests>>?> = _lapTests
 
+    private var _coviedTests= MutableStateFlow<StatusResult<MutableList<LapTests>>?>(null)
+    val coviedTests: StateFlow<StatusResult<MutableList<LapTests>>?> =_coviedTests
+
+
     private var _bookLapTest: MutableLiveData<StatusResult<Boolean>> =
         MutableLiveData()
     val bookLapTest: LiveData<StatusResult<Boolean>> =_bookLapTest
@@ -53,6 +57,23 @@ class ServicesViewModel @Inject constructor(
         }
     }
 
+    fun getAllCoviedTests(){
+        _coviedTests.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebaseSource.getCoviedTests().addSnapshotListener { value, error ->
+                if (error==null)
+                {
+                    _coviedTests.value=MyUtils.handledata(value)
+                }else{
+                    _coviedTests.value=StatusResult.OnError("${error.message}")
+                }
+            }
+        }else{
+            _coviedTests.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+
     fun getSearchLapTests(name:String){
         _lapTests.value=StatusResult.OnLoading()
         if (hasInternetConnection())
@@ -73,10 +94,11 @@ class ServicesViewModel @Inject constructor(
     fun bookLapTest(bookTest: BookTest){
         _bookLapTest.value=StatusResult.OnLoading()
         if (hasInternetConnection()){
-            val ref=firebaseSource.bookLapTests(bookTest)
+            val ref=firebaseSource.bookLapTests(bookTest).document()
             val mybook=bookTest
             bookTest.id=ref.id
-            ref.document(bookTest.id!!).set(bookTest).addOnCompleteListener {
+            bookTest.userId=firebaseSource.user()!!.uid
+            ref.set(bookTest).addOnCompleteListener {
                 if (it.isSuccessful)
                 {
                     _bookLapTest.value=StatusResult.OnSuccess()

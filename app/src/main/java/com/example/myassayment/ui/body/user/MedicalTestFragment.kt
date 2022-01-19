@@ -1,24 +1,25 @@
-package com.example.myassayment.ui.body.serviesesfragment
+package com.example.myassayment.ui.body.user
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.myassayment.R
-import com.example.myassayment.databinding.FragmentCovid19Binding
-import com.example.myassayment.databinding.FragmentLapTestBinding
+import com.example.myassayment.databinding.FragmentMedicalTestBinding
+import com.example.myassayment.databinding.FragmentMyElecticalRecordBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Covid19Fragment : Fragment() {
-    private var _binding: FragmentCovid19Binding?=null
+class MedicalTestFragment : Fragment() {
+    private var _binding: FragmentMedicalTestBinding?=null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding= FragmentCovid19Binding.inflate(layoutInflater)
+        _binding= FragmentMedicalTestBinding.inflate(layoutInflater)
         setUp()
         return binding.root
     }
