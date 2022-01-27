@@ -36,9 +36,15 @@ class ServicesViewModel @Inject constructor(
         MutableLiveData()
     val bookLapTest: LiveData<StatusResult<Boolean>> =_bookLapTest
 
+    private var _branches: MutableStateFlow<StatusResult<MutableList<Branche>>?> =
+        MutableStateFlow(null)
+    val branches: StateFlow<StatusResult<MutableList<Branche>>?> =_branches
+
     private var _allBranches: MutableStateFlow<StatusResult<MutableList<Branche>>?> =
         MutableStateFlow(null)
     val allBranches: StateFlow<StatusResult<MutableList<Branche>>?> =_allBranches
+
+
 
     fun getAllLapTests(){
         _lapTests.value=StatusResult.OnLoading()
@@ -111,11 +117,28 @@ class ServicesViewModel @Inject constructor(
         }
     }
 
-    fun getAllBranches(area:String,city:String)
+    fun getBranches(area:String, city:String)
+    {
+        _branches.value=StatusResult.OnLoading()
+        if (hasInternetConnection()){
+            firebaseSource.getBranches(area, city).addSnapshotListener { value, error ->
+                if (error==null)
+                {
+                    _branches.value=MyUtils.handledata(value)
+                }else{
+                    _branches.value=StatusResult.OnError(error.message.toString())
+                }
+            }
+        }else{
+            _branches.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+
+    fun getAllBranches()
     {
         _allBranches.value=StatusResult.OnLoading()
         if (hasInternetConnection()){
-            firebaseSource.getAllBranches(area, city).addSnapshotListener { value, error ->
+            firebaseSource.getAllBranches().addSnapshotListener { value, error ->
                 if (error==null)
                 {
                     _allBranches.value=MyUtils.handledata(value)

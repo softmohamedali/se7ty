@@ -34,6 +34,7 @@ object Validation {
         }
         return false
     }
+
     fun isValidPassword(et:EditText):Boolean
     {
         val value=et.text.toString()

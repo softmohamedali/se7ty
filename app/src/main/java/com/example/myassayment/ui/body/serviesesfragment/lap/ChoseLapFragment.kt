@@ -47,7 +47,7 @@ class ChoseLapFragment : Fragment(),BranchItemAdapter.BranchItemClick {
         Log.d("mylog",bookTest.toString())
         setUpView()
         setupRecy()
-        servicesViewModel.getAllBranches(bookTest.area!!,bookTest.city!!)
+        servicesViewModel.getBranches(bookTest.area!!,bookTest.city!!)
         setUpObservers()
     }
 
@@ -71,7 +71,7 @@ class ChoseLapFragment : Fragment(),BranchItemAdapter.BranchItemClick {
 
     private fun setUpObservers() {
         lifecycleScope.launchWhenStarted {
-            servicesViewModel.allBranches.collect {
+            servicesViewModel.branches.collect {
                 when{
                     it is StatusResult.OnSuccess ->{
                         brancheAdapter.setData(it.data!!)

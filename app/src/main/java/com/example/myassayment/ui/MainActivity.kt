@@ -92,6 +92,11 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 binding.containerBarMain.isVisible=true
                 binding.tvLabelMain.text="se7ty"
             }
+            R.id.accountFragment ->{
+                binding.bottomNavigationView.isVisible=true
+                binding.containerBarMain.isVisible=true
+                binding.tvLabelMain.text="se7ty"
+            }
             else -> {
                 binding.bottomNavigationView.isVisible=false
                 binding.containerBarMain.isVisible=false

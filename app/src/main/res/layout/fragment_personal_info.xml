@@ -117,6 +117,7 @@
                             android:layout_height="50dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="8dp"
+                            android:padding="8dp"
                             android:background="@drawable/edit_text_testlip_back"
                             android:ems="10"
                             android:inputType="number" />
@@ -144,6 +145,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/edit_text_testlip_back"
                             android:ems="10"
+                            android:padding="8dp"
                             android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
@@ -182,6 +184,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/edit_text_testlip_back"
                             android:ems="10"
+                            android:padding="8dp"
                             android:inputType="number" />
                     </LinearLayout>
 
@@ -207,6 +210,7 @@
                             android:layout_marginTop="8dp"
                             android:background="@drawable/edit_text_testlip_back"
                             android:ems="10"
+                            android:padding="8dp"
                             android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
@@ -263,12 +267,30 @@
         android:layout_height="match_parent"
         android:background="#86000000" />
 
-    <ProgressBar
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/pb_personal"
-        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:strokeWidth="0.5dp"
         android:visibility="invisible"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        app:strokeColor="@color/background_tool"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_margin="16dp"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+
 
 </FrameLayout>

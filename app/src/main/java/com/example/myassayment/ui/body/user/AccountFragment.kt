@@ -74,6 +74,12 @@ class AccountFragment : DialogFragment() {
         binding.tvMyelectricalAccount.setOnClickListener {
             findNavController().navigate(R.id.action_accountFragment_to_myElecticalRecordFragment)
         }
+        binding.imgSettingAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_accountFragment_to_settingFragment)
+        }
+        binding.tvSettingAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_accountFragment_to_settingFragment)
+        }
     }
 
     private fun setUpObsevers() {

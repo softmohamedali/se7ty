@@ -18,4 +18,5 @@
     <color name="button_stroke">#4ECF32</color>
     <color name="icon">#FFFFFF</color>
     <color name="text_color_1">#454545</color>
+    <color name="red">#F10000</color>
 </resources>

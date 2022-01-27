@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_accountFragment_to_myElecticalRecordFragment"
             app:destination="@id/myElecticalRecordFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </dialog>
     <fragment
         android:id="@+id/bookingFragment"
@@ -332,10 +335,65 @@
         android:id="@+id/medicationFragment"
         android:name="com.example.myassayment.ui.body.user.MedicationFragment"
         android:label="fragment_medication"
-        tools:layout="@layout/fragment_medication" />
+        tools:layout="@layout/fragment_medication" >
+        <action
+            android:id="@+id/action_medicationFragment_to_addMedicationFragment"
+            app:destination="@id/addMedicationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/medicalTestFragment"
         android:name="com.example.myassayment.ui.body.user.MedicalTestFragment"
         android:label="fragment_medical_test"
-        tools:layout="@layout/fragment_medical_test" />
+        tools:layout="@layout/fragment_medical_test" >
+        <action
+            android:id="@+id/action_medicalTestFragment_to_addMedicalTestFragment"
+            app:destination="@id/addMedicalTestFragment" />
+        <action
+            android:id="@+id/action_medicalTestFragment_to_viewAttachementFragment"
+            app:destination="@id/viewAttachementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicalTestFragment"
+        android:name="com.example.myassayment.ui.body.user.AddMedicalTestFragment"
+        android:label="fragment_add_medical_test"
+        tools:layout="@layout/fragment_add_medical_test" >
+        <argument
+            android:name="medicalTest"
+            app:argType="com.example.myassayment.models.MedicalTest"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicationFragment"
+        android:name="com.example.myassayment.ui.body.user.AddMedicationFragment"
+        android:label="fragment_add_medication"
+        tools:layout="@layout/fragment_add_medication" >
+        <argument
+            android:name="medication"
+            app:argType="com.example.myassayment.models.Medecation"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewAttachementFragment"
+        android:name="com.example.myassayment.ui.body.user.ViewAttachementFragment"
+        android:label="fragment_view_attachement"
+        tools:layout="@layout/fragment_view_attachement" >
+        <argument
+            android:name="img"
+            app:argType="string"
+            android:defaultValue=" " />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.myassayment.ui.body.user.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.myassayment.ui.body.user.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

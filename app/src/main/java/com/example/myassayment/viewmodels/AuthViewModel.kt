@@ -7,14 +7,16 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
 import com.example.myassayment.data.remote.FirebaseSource
 import com.example.myassayment.models.Client
+import com.example.myassayment.models.Medecation
+import com.example.myassayment.models.MedicalTest
 import com.example.myassayment.utils.MyUtils
+import com.example.myassayment.utils.MyUtils.handledata
 import com.example.myassayment.utils.StatusResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 
@@ -29,12 +31,29 @@ class AuthViewModel @Inject constructor(
     private var _isPassSend:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
     private var _isgetUser:MutableLiveData<StatusResult<Client>> = MutableLiveData()
     private var _isSave:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
+    private var _isAddtestUser:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
+    private var _isAddMedicationUser:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
+    private var _medicalTestUser:MutableStateFlow<StatusResult<MutableList<MedicalTest>>?> =
+        MutableStateFlow(null)
+    private var _medicationUser:MutableStateFlow<StatusResult<MutableList<Medecation>>?> =
+        MutableStateFlow(null)
+    private var _isDelteMedicalTest:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
+    private var _isDelteMedication:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
+    private var _isChangePass:MutableLiveData<StatusResult<Boolean>> = MutableLiveData()
 
     val isLogIn:LiveData<StatusResult<Boolean>> = _isLogIn
     val isRegister:LiveData<StatusResult<Boolean>> = _isRegister
     val isPassSend:LiveData<StatusResult<Boolean>> = _isPassSend
     val isgetUser:LiveData<StatusResult<Client>> = _isgetUser
     val isSave:LiveData<StatusResult<Boolean>> = _isSave
+    val isAddtestUser:LiveData<StatusResult<Boolean>> = _isAddtestUser
+    val isAddMedicationUser:LiveData<StatusResult<Boolean>> = _isAddMedicationUser
+    val medicalTestUser:StateFlow<StatusResult<MutableList<MedicalTest>>?> = _medicalTestUser
+    val medicationUser:StateFlow<StatusResult<MutableList<Medecation>>?> = _medicationUser
+    val isDelteMedicalTest:LiveData<StatusResult<Boolean>> = _isDelteMedicalTest
+    val isDelteMedication:LiveData<StatusResult<Boolean>> = _isDelteMedication
+    val isChangePass:LiveData<StatusResult<Boolean>> = _isChangePass
+
     fun currntuser()=firebase.user()
     val auth=firebase.auth
 
@@ -98,6 +117,29 @@ class AuthViewModel @Inject constructor(
 
     }
 
+    fun changePassword(curretPass:String,newPass:String)
+    {
+        _isChangePass.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebase.changePassword(currePass = curretPass,newPass = curretPass).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    firebase.user()!!.updatePassword(newPass).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            _isChangePass.value = StatusResult.OnSuccess(true)
+                        }else{
+                            _isChangePass.value = StatusResult.OnError("${it.exception?.message}")
+                        }
+                    }
+                } else {
+                    _isChangePass.value = StatusResult.OnError("${it.exception?.message}")
+                }
+            }
+        }else{
+            _isChangePass.value = StatusResult.OnError("No Internet Connection")
+        }
+    }
+
     fun saveUser(client: Client){
         _isSave.value=StatusResult.OnLoading()
         if (hasInternetConnection())
@@ -136,6 +178,8 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+
+
     fun getUserInfo(){
         _isgetUser.value=StatusResult.OnLoading()
         if (hasInternetConnection())
@@ -154,7 +198,119 @@ class AuthViewModel @Inject constructor(
     }
 
 
+    fun addMedicalTestForUser(test:MedicalTest, imgTest:ByteArray?)
+    {
+        _isAddtestUser.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            if (imgTest!=null)
+            {
+                firebase.saveImg(imgTest) {
+                    test.img = it
+                    saveMedicalTest(test)
+                }
+            }else{
+                saveMedicalTest(test)
+            }
+        }else{
+            _isAddtestUser.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
 
+    fun saveMedicalTest(medicalTest: MedicalTest)
+    {
+        firebase.addTestForUser(medicalTest).addOnCompleteListener {
+            if (it.isSuccessful)
+            {
+                _isAddtestUser.value=StatusResult.OnSuccess(true)
+            }else{
+                _isRegister.value=StatusResult.OnError("${it.exception?.message}")
+            }
+        }
+    }
+
+    fun delteMedicalTest(medicalTest: MedicalTest)
+    {
+        _isDelteMedicalTest.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebase.deleteMedicalTestForUser(medicalTest).addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                    _isDelteMedicalTest.value=StatusResult.OnSuccess(true)
+                }else{
+                    _isDelteMedicalTest.value=StatusResult.OnError("${it.exception?.message}")
+                }
+            }
+        }else{
+            _isDelteMedicalTest.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+
+
+    fun getUserMedicalTest(){
+        if (hasInternetConnection()) {
+            _medicalTestUser.value=StatusResult.OnLoading()
+            firebase.getUserMedicalTest().addSnapshotListener { value, error ->
+                if (error == null) {
+                    _medicalTestUser.value=handledata<MedicalTest>(value)
+                } else {
+                    _medicalTestUser.value=StatusResult.OnError("No internet Connection")
+                }
+            }
+        } else {
+            _medicalTestUser.value=StatusResult.OnError("No internet Connection")
+        }
+    }
+
+    fun addMedicationForUser(medication:Medecation)
+    {
+        _isAddMedicationUser.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebase.addMedicationForUser(medication).addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                    _isAddMedicationUser.value=StatusResult.OnSuccess(true)
+                }else{
+                    _isAddMedicationUser.value=StatusResult.OnError("${it.exception?.message}")
+                }
+            }
+        }else{
+            _isAddMedicationUser.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+    fun delteMedication(medication: Medecation)
+    {
+        _isDelteMedication.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebase.deleteMedicationForUser(medication).addOnCompleteListener {
+                if (it.isSuccessful)
+                {
+                    _isDelteMedication.value=StatusResult.OnSuccess(true)
+                }else{
+                    _isDelteMedication.value=StatusResult.OnError("${it.exception?.message}")
+                }
+            }
+        }else{
+            _isDelteMedication.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+    fun getUserMedication(){
+        if (hasInternetConnection()) {
+            _medicationUser.value=StatusResult.OnLoading()
+            firebase.getUserMedication().addSnapshotListener { value, error ->
+                if (error == null) {
+                    _medicationUser.value=handledata<Medecation>(value)
+                } else {
+                    _medicationUser.value=StatusResult.OnError("No internet Connection")
+                }
+            }
+        } else {
+            _medicationUser.value=StatusResult.OnError("No internet Connection")
+        }
+    }
 
     private fun hasInternetConnection(): Boolean {
         val connectivityManger = getApplication<Application>()

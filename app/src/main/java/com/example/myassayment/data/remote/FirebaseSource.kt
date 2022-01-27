@@ -8,13 +8,17 @@ import com.example.myassayment.utils.Constants.NAME_FIELD_SPETIALTY
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.runBlocking
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.random.Random
 
 @Singleton
 class FirebaseSource @Inject constructor(
@@ -43,6 +47,11 @@ class FirebaseSource @Inject constructor(
     fun logout()=auth.signOut()
 
     fun resetPassword(email: String)=auth.sendPasswordResetEmail(email)
+
+    fun changePassword(currePass:String,newPass:String):Task<Void>{
+        val creditinal= EmailAuthProvider.getCredential(user()?.email!!,currePass)
+        return user()?.reauthenticate(creditinal)!!
+    }
     //-----------------------------------------------------------------------------------------
 
 
@@ -123,11 +132,79 @@ class FirebaseSource @Inject constructor(
 
     fun bookLapTests(lapTestsBook:BookTest)=firestore.collection(Constants.COLLECTION_BOOKINGlAPTESTS)
 
-    fun getAllBranches(area:String,city:String)=firestore.collection(Constants.COLLLECTION_BRANCHES)
+    fun getBranches(area:String, city:String)=firestore.collection(Constants.COLLLECTION_BRANCHES)
+
+    fun getAllBranches()=firestore.collection(Constants.COLLLECTION_BRANCHES)
+
+
+    fun addTestForUser(test: MedicalTest):Task<Void>{
+        if (test.id.isNullOrEmpty())
+        {
+            val ref=firestore.collection(Constants.COLLLECTION_MEDICALTEST).document()
+            val mytest=test
+            mytest.id=ref.id
+            mytest.userid=user()?.uid
+            return ref.set(mytest)
+        }else{
+            return firestore.collection(Constants.COLLLECTION_MEDICALTEST).document(test.id!!).set(test)
+        }
+    }
+
+    fun deleteMedicalTestForUser(medicalTest: MedicalTest)=
+        firestore.collection(Constants.COLLLECTION_MEDICALTEST).document(medicalTest.id!!)
+            .delete()
+
+    fun deleteMedicationForUser(medication: Medecation)=
+        firestore.collection(Constants.COLLLECTION_MEDICATION).document(medication.id!!)
+            .delete()
+
+    fun addMedicationForUser(meidication: Medecation):Task<Void>{
+        if (meidication.id.isNullOrEmpty())
+        {
+            val ref=firestore.collection(Constants.COLLLECTION_MEDICATION).document()
+            val myMedication=meidication
+            myMedication.id=ref.id
+            myMedication.userid=user()?.uid
+            return ref.set(myMedication)
+        }else{
+            return firestore.collection(Constants.COLLLECTION_MEDICALTEST).document(meidication.id!!).set(meidication)
+        }
+
+    }
+
+    fun getUserMedicalTest()=firestore.collection(Constants.COLLLECTION_MEDICALTEST)
+        .whereEqualTo("userid",user()?.uid)
+
+    fun getUserMedication()=firestore.collection(Constants.COLLLECTION_MEDICATION)
+        .whereEqualTo("userid",user()?.uid)
+
     //-------------------------------------------------------------------------------------------
 
 
     //----------------------------------------DataStorage----------------------------------------
+
+    fun saveImg(imgpitmap:ByteArray,onSuccesUpload:(String)->Unit){
+        val ref = dataStorage.reference
+            .child("${auth.currentUser?.uid}/images/${UUID.randomUUID()}${Random.nextInt()}")
+            val task=ref.putBytes(imgpitmap)
+        var downloadUrl: String? = "soak"
+
+        runBlocking {
+            task.continueWithTask {
+                if (!it.isSuccessful) {
+                    it.exception?.let {
+                        throw it
+                    }
+                }
+                ref.downloadUrl
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    downloadUrl = task.result.toString()
+                    onSuccesUpload(downloadUrl!!)
+                }
+            }
+        }
+    }
 
 
     //-------------------------------------------------------------------------------------------
