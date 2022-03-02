@@ -1,93 +1,89 @@
 # Se7ty app native android app
 
-application for book appointements with doctors is the best chose for user and doctor that help first doctor to add dates for his free time to extreem work and  fro user to
-orgnize his health life and he can share with doctor his medical used or laptests he taken and if he want position for emergency setuation and the app will notify user for dates 
-he booking and the application allow user to book date for covied test from specific branch 
+Appointment booking application with doctors is the best choice for the user and the doctor who helps the doctor in adding appointments for his spare time for the extra work that helps the user to coordinate his healthy life and he can share with the doctor with his medical record or the medicines he takes and if he wants a position for emergency preparation, the application will notify the user of the dates The application allows the user to book an appointment for the covered test from a specific branch
 
-the system compose from 3 application 
-1-for user 
-2-for doctor
-3-for manger to accepte or refuse doctor by seeing his certificate and add branches and manage the application
+The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - for the manager to accept or reject the doctor by looking at his certificate, adding branches and managing the application
 
-# moali car
+# se7ty
 ## features
-- Authentication (Log in ,Register)
-- show cars
+- Authentication (Log in ,Register,remmember password,log in with google)
+- show all doctors avilable
+- show all services avilable
+- show my up comming dates
+- show my cancled booking
+- show all doctor avilable in maps
+- send emergency massage
 - search
-- save in favorits
 - log out
-- add your cars to sell it
 - notification
+- and more ........
 
 ## Technology i used it
-- sqflite
-- firebase firestore
+- android native with kotlin
+- ui with xml - material design
+- for manger app i used jetpack compose for ui
 - firebase dataStorage
+- firebase firestory
 - firebase Auth
-- Navigation
-- getx
-- Dependency injection (binding)
-- async await
+- firebase fcm
+- Navigation componnent
+- live data for easy state
+- state flow for complex state with fillter and map data
+- flow
+- Coroutines for async programming
+- coil for load img
+- mvvm with repositry pattern
+- for manger app with jetpack compose i used mvvm with repositry pattern and clean archicture with use cases 
+- dependency injection with hilt
+- room for local database
+- recycler view
+- rotrofit for send notification
+- data binding
+- data store prepherences
+- google maps with coustom style marker
 <br/>
 
-## home screen🌴🌴
+##🌴
 
 <img src="home.PNG" width="300">
 
-
 <br/>
 <br/>
-
-## Log in 🌴🌴
 
 <img src="login.PNG" width="300">
 
 <br/>
 <br/>
 
-## full property to sell car🌴🌴
-
 <img src="sellcar.PNG" width="300">
 
 <br/>
 <br/>
-
-## Register🌴🌴
 
 <img src="register.PNG" width="300">
 
 <br/>
 <br/>
 
-## search screen🌴🌴
-
 <img src="search.PNG" width="300">
 
 <br/>
 <br/>
-
-## notification🌴🌴
 
 <img src="Screenshot_1644545999.png" width="300">
 
 <br/>
 <br/>
 
-## drawer navigation🌴🌴
-
 <img src="Screenshot_1644546282.png" width="300">
 
 <br/>
 <br/>
 
-## property screen🌴🌴
-
 <img src="Screenshot_1644546342.png" width="300">
 
 <br/>
 <br/>
-
-## favorite screen🌴🌴
 
 <img src="Screenshot_1644546325.png" width="300">
 
