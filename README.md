@@ -1,6 +1,13 @@
-# fisrtflutter
+# Se7ty app native android app
 
-A new Flutter project.
+application for book appointements with doctors is the best chose for user and doctor that help first doctor to add dates for his free time to extreem work and  fro user to
+orgnize his health life and he can share with doctor his medical used or laptests he taken and if he want position for emergency setuation and the app will notify user for dates 
+he booking and the application allow user to book date for covied test from specific branch 
+
+the system compose from 3 application 
+1-for user 
+2-for doctor
+3-for manger to accepte or refuse doctor by seeing his certificate and add branches and manage the application
 
 # moali car
 ## features
