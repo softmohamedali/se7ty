@@ -60,6 +60,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 
 <br/>
 <br/>
+
 <img src="10.jpg" width="300"><img src="11.jpg" width="300"><img src="12.jpg" width="300">
 
 <br/>
@@ -76,6 +77,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 
 <br/>
 <br/>
+
 <img src="19.jpg" width="300"><img src="20.jpg" width="300"><img src="21.jpg" width="300">
 
 
