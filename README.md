@@ -45,7 +45,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 
 ##🌴
 
-<img src="home.PNG" width="300">
+<img src="1.jpg" width="300">
 
 <br/>
 <br/>
