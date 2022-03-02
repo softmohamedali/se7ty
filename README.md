@@ -45,6 +45,9 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 
 ##🌴
 
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/TheAlphamerc/flutter_ecommerce_app/blob/master/screenshots/screenshot_1.jpg?raw=true)|![](https://github.com/TheAlphamerc/flutter_ecommerce_app/blob/master/screenshots/screenshot_2.jpg?raw=true)|![](https://github.com/TheAlphamerc/flutter_ecommerce_app/blob/master/screenshots/screenshot_3.jpg?raw=true)
+
 <img src="1.jpg" width="300">
 <img src="2.jpg" width="300">
 <img src="3.jpg" width="300">
