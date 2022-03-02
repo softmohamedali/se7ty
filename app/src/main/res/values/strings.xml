@@ -162,5 +162,7 @@
     <string name="change_password">Change Password</string>
     <string name="change_my_password">Change My Password</string>
     <string name="setting">Setting</string>
+    <string name="my_data">My Data</string>
+    <string name="warning">Warning</string>
 
 </resources>

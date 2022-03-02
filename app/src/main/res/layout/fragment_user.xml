@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="Doctor Profile"
+                android:text="@string/my_data"
                 android:textColor="@color/icon"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
@@ -49,6 +49,32 @@
             app:layout_constraintTop_toBottomOf="@+id/container_bar_userfrag">
 
             <TextView
+                android:id="@+id/textfVifdewk10"
+                style="@style/CustomText_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/your_name"
+                android:textAlignment="textStart"
+                android:textColor="@color/background_tool"
+                app:layout_constraintEnd_toEndOf="@+id/tv_email_userfrag"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email_userfrag" />
+
+            <EditText
+                android:id="@+id/et_name_userfrag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_your_name"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/textfVifdewk10"
+                app:layout_constraintStart_toStartOf="@+id/textfVifdewk10"
+                app:layout_constraintTop_toBottomOf="@+id/textfVifdewk10"
+                tools:ignore="LabelFor" />
+
+            <TextView
                 android:id="@+id/textfViewk10"
                 style="@style/CustomText_2"
                 android:layout_width="0dp"
@@ -58,9 +84,9 @@
                 android:text="@string/email_for_contact"
                 android:textAlignment="textStart"
                 android:textColor="@color/background_tool"
-                app:layout_constraintEnd_toEndOf="@+id/tv_email_userfrag"
+                app:layout_constraintEnd_toEndOf="@+id/et_name_userfrag"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_email_userfrag" />
+                app:layout_constraintTop_toBottomOf="@+id/et_name_userfrag" />
 
             <EditText
                 android:id="@+id/et_email_userfrag"
@@ -164,7 +190,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/tv_name_userfrag"
+                android:id="@+id/tv_email_userfrag"
                 style="@style/CustomText_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -173,18 +199,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/textView40"
                 app:layout_constraintHorizontal_bias="0.541"
                 app:layout_constraintStart_toStartOf="@+id/textView40"
-                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+                app:layout_constraintTop_toBottomOf="@+id/img_user" />
 
-            <TextView
-                android:id="@+id/tv_email_userfrag"
-                style="@style/CustomText_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="@+id/tv_name_userfrag"
-                app:layout_constraintStart_toStartOf="@+id/tv_name_userfrag"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name_userfrag" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
@@ -291,7 +307,17 @@
                 app:layout_constraintBottom_toTopOf="@+id/btn_savel_userfrag"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_name_userfrag" />
+                app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/ic_add_photo"
+                app:layout_constraintEnd_toEndOf="@+id/textView40"
+                app:layout_constraintStart_toStartOf="@+id/textView40"
+                app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

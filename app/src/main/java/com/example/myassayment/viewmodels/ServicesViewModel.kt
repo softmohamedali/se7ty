@@ -23,7 +23,7 @@ class ServicesViewModel @Inject constructor(
     private var firebaseSource: FirebaseSource,
     application: Application
 ):AndroidViewModel(application) {
-
+    fun currntuser()=firebaseSource.user()
     private var _lapTests:MutableStateFlow<StatusResult<MutableList<LapTests>>?> =
         MutableStateFlow(null)
     val lapTests:StateFlow<StatusResult<MutableList<LapTests>>?> = _lapTests

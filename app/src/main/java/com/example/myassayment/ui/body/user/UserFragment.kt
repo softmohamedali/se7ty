@@ -1,12 +1,17 @@
 package com.example.myassayment.ui.body.user
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -22,6 +27,7 @@ import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.AuthViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.ByteArrayOutputStream
 
 @AndroidEntryPoint
 class UserFragment : Fragment() {
@@ -32,6 +38,7 @@ class UserFragment : Fragment() {
     private lateinit var photourl:String
     private lateinit var email:String
     private lateinit var name:String
+    private var imgUser:ByteArray?=null
     private val navArgs by navArgs<UserFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +94,7 @@ class UserFragment : Fragment() {
         email=userInfo.email!!
         name=userInfo.name!!
         binding.tvEmailUserfrag.text="Email: ${email}"
-        binding.tvNameUserfrag.text="Name : ${name}"
+        binding.etNameUserfrag.setText(name)
         binding.etEmailUserfrag.setText(userInfo.emailToContact)
         binding.etPhoneUserfrag.setText(userInfo.phone)
         binding.etGenderUserfrag.setText(userInfo.gender)
@@ -100,6 +107,7 @@ class UserFragment : Fragment() {
         binding.btnSavelUserfrag.setOnClickListener {
             saveUser()
         }
+        binding.imgUser.load(userInfo.photoUrl)
         binding.btnBackUserfrag.setOnClickListener { findNavController().popBackStack() }
         binding.btnPickpositionUserfrag.setOnClickListener {
             findNavController().navigate(R.id.action_userFragment_to_pickPositionFragment)
@@ -108,10 +116,14 @@ class UserFragment : Fragment() {
         {
             binding.etPositionUserfrag.setText("${navArgs.lati},${navArgs.lang}")
         }
+        binding.imgUser.setOnClickListener {
+            selectImg()
+        }
     }
 
     private fun saveUser() {
         val emailToContact=binding.etEmailUserfrag.text.toString()
+        val name=binding.etNameUserfrag.text.toString()
         val phone=binding.etPhoneUserfrag.text.toString()
         val gender=binding.etGenderUserfrag.text.toString()
         val age=binding.etAgeUserfrag.text.toString()
@@ -131,13 +143,31 @@ class UserFragment : Fragment() {
                 age = age,
                 desease = deases,
                 position = position
-            ))
+            ),imgUser)
         }else{
             return
         }
 
     }
-
+    private fun selectImg() {
+        val intent= Intent().apply {
+            action= Intent.ACTION_GET_CONTENT
+            type="image/*"
+            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/png","image/jpeg"))
+        }
+        registerLaunche.launch(intent)
+    }
+    val registerLaunche=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.data!=null&&it.resultCode== Activity.RESULT_OK){
+            val imgUrl=it.data!!.data
+            val bitmap= MediaStore.Images.Media.getBitmap(requireActivity().contentResolver,imgUrl)
+            val outByteArray= ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG,25,outByteArray)
+            val outByteArra=outByteArray.toByteArray()
+            imgUser=outByteArra
+            binding.imgUser.setImageURI(imgUrl)
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding=null

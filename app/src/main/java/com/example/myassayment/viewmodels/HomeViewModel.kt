@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
     val firebase: FirebaseSource,
     application:Application
 ): AndroidViewModel (application){
-
+    fun currntuser()=firebase.user()
     private var _doctors:MutableLiveData<StatusResult<MutableList<Doctor>>> = MutableLiveData()
 
     val doctor:MutableLiveData<StatusResult<MutableList<Doctor>>> =_doctors

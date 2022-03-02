@@ -16,6 +16,8 @@ import com.example.myassayment.adapters.LapTestsItemAdapter
 import com.example.myassayment.databinding.FragmentLapTestBinding
 import com.example.myassayment.models.LapTests
 import com.example.myassayment.models.ListLapTests
+import com.example.myassayment.ui.body.MainFragmentDirections
+import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.ServicesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,13 +45,20 @@ class LapTestFragment : Fragment(), LapTestsItemAdapter.LapTestsItemClick{
         servicesViewModel.getAllLapTests()
         setUpObservers()
         binding.fabGotoAddmoreLaptests.setOnClickListener {
-            if (lapTestsAdapter.getLapTestCheaked().size>0)
-            {
-                val action=LapTestFragmentDirections
-                    .actionLapTestFragmentToAddMoreLapTestsDetailsFragment(listLapTests)
-                findNavController().navigate(action)
+            if (servicesViewModel.currntuser()==null){
+                MyUtils.toastwarningBooking(
+                    requireContext(),
+                    "You Should Login to get Permission to this operation"
+                )
             }else{
-                Toast.makeText(requireContext(), "Please Select Lap Test", Toast.LENGTH_SHORT).show()
+                if (lapTestsAdapter.getLapTestCheaked().size>0)
+                {
+                    val action=LapTestFragmentDirections
+                        .actionLapTestFragmentToAddMoreLapTestsDetailsFragment(listLapTests)
+                    findNavController().navigate(action)
+                }else{
+                    Toast.makeText(requireContext(), "Please Select Lap Test", Toast.LENGTH_SHORT).show()
+                }
             }
         }
         binding.imgCloseLaptests.setOnClickListener {

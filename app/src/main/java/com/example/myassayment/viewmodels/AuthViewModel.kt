@@ -50,6 +50,7 @@ class AuthViewModel @Inject constructor(
     val isAddMedicationUser:LiveData<StatusResult<Boolean>> = _isAddMedicationUser
     val medicalTestUser:StateFlow<StatusResult<MutableList<MedicalTest>>?> = _medicalTestUser
     val medicationUser:StateFlow<StatusResult<MutableList<Medecation>>?> = _medicationUser
+
     val isDelteMedicalTest:LiveData<StatusResult<Boolean>> = _isDelteMedicalTest
     val isDelteMedication:LiveData<StatusResult<Boolean>> = _isDelteMedication
     val isChangePass:LiveData<StatusResult<Boolean>> = _isChangePass
@@ -71,7 +72,7 @@ class AuthViewModel @Inject constructor(
                         phone = it.result.user?.phoneNumber,
                         photoUrl = it.result.user?.photoUrl.toString()
                     )
-                    saveUser(client)
+                    saveUser(client,null)
                 } else {
                     _isRegister.value=StatusResult.OnError("${it.exception?.message}")
                 }
@@ -106,7 +107,7 @@ class AuthViewModel @Inject constructor(
             firebase.createUsre(email = email,password = pass).addOnCompleteListener {
                 if (it.isSuccessful)
                 {
-                    saveUser(client)
+                    saveUser(client,null)
                 }else{
                     _isRegister.value=StatusResult.OnError("${it.exception?.message}")
                 }
@@ -140,23 +141,36 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun saveUser(client: Client){
+    fun saveUser(client: Client,imgUser:ByteArray?){
         _isSave.value=StatusResult.OnLoading()
         if (hasInternetConnection())
         {
-            firebase.saveUser(client).addOnCompleteListener {
-                if (it.isSuccessful)
-                {
-                    _isRegister.value=StatusResult.OnSuccess(true)
-                    _isSave.value=StatusResult.OnSuccess(true)
-                }else{
-                    _isRegister.value=StatusResult.OnError("${it.exception?.message}")
-                    _isSave.value=StatusResult.OnError("${it.exception?.message}")
+            if (imgUser!=null)
+            {
+                firebase.saveImg(imgUser) {
+                    client.img = it
+                    client.photoUrl=it
+                    saveUserObject(client)
                 }
+            }else{
+                saveUserObject(client)
             }
         }else{
             _isRegister.value=StatusResult.OnError("No Internet Connection")
             _isSave.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+
+    fun saveUserObject(user:Client){
+        firebase.saveUser(user).addOnCompleteListener {
+            if (it.isSuccessful)
+            {
+                _isRegister.value=StatusResult.OnSuccess(true)
+                _isSave.value=StatusResult.OnSuccess(true)
+            }else{
+                _isRegister.value=StatusResult.OnError("${it.exception?.message}")
+                _isSave.value=StatusResult.OnError("${it.exception?.message}")
+            }
         }
     }
 
@@ -311,6 +325,7 @@ class AuthViewModel @Inject constructor(
             _medicationUser.value=StatusResult.OnError("No internet Connection")
         }
     }
+
 
     private fun hasInternetConnection(): Boolean {
         val connectivityManger = getApplication<Application>()

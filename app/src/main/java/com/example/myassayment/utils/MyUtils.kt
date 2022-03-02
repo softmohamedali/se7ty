@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import com.example.myassayment.R
 import com.example.myassayment.databinding.LayoutToastSuccessBinding
+import com.example.myassayment.databinding.LayoutToastWringingBinding
 import com.example.myassayment.models.Client
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
@@ -46,9 +47,18 @@ object MyUtils {
 
     fun toastSuccessBooking(context: Context, msg: String) {
         var toast = Toast(context)
-        toast.duration = Toast.LENGTH_LONG
+        toast.duration = Toast.LENGTH_SHORT
         val view = LayoutToastSuccessBinding.inflate(LayoutInflater.from(context))
         view.textView9.text = msg
+        toast.view = view.root
+        toast.setGravity(Gravity.CENTER, 0, 0)
+        toast.show()
+    }
+    fun toastwarningBooking(context: Context, msg: String) {
+        var toast = Toast(context)
+        toast.duration = Toast.LENGTH_SHORT
+        val view = LayoutToastWringingBinding.inflate(LayoutInflater.from(context))
+        view.tvWarning.text = msg
         toast.view = view.root
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()

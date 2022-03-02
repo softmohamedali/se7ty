@@ -18,6 +18,7 @@ class BottomCheatViewModel @Inject constructor(
     var firebaseSource: FirebaseSource,
     application: Application
 ) : AndroidViewModel(application) {
+    fun currntuser()=firebaseSource.user()
     private var _isUploadMassage = MutableLiveData<StatusResult<Boolean>>()
 
     val isUploadMassage: LiveData<StatusResult<Boolean>> = _isUploadMassage

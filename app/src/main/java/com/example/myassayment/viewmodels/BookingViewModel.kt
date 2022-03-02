@@ -25,6 +25,8 @@ class BookingViewModel @Inject constructor(
     application: Application
 ):AndroidViewModel(application) {
 
+    fun currntuser()=firebase.user()
+
     private var _dateScedulaDoctor: MutableLiveData<StatusResult<MutableList<TimeSchedule>>> =
         MutableLiveData()
     private var _doctorById: MutableStateFlow<StatusResult<Doctor>> =
@@ -81,7 +83,7 @@ class BookingViewModel @Inject constructor(
         }
 
 
-    fun bookDate(doctor: Doctor, timeSelected: TimeSchedule) {
+    fun bookDate(doctor: Doctor, timeSelected: TimeSchedule,client: Client) {
         _bookAppointement.value=StatusResult.OnLoading()
         if (hasInternetConnection())
         {
@@ -91,9 +93,7 @@ class BookingViewModel @Inject constructor(
                     timeBook = Calendar.getInstance().time.toString(),
                     clientId = firebase.user()?.uid,
                     doctor = doctor,
-                    client = Client(
-                        name = firebase.auth.currentUser?.displayName,
-                    ),
+                    client = client,
                     doctorId = doctor.doctorsId
                 )
             ).addOnCompleteListener {

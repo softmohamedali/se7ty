@@ -66,10 +66,10 @@ class FirebaseSource @Inject constructor(
     }
 
 
-    fun getDoctors()=firestore.collection(Constants.COLLLECTION_DOCTORS)
+    fun getDoctors()=firestore.collection(Constants.COLLLECTION_DOCTORS_ACCEPTED)
 
     fun getDoctorById(doctorId:String)=
-        firestore.collection(Constants.COLLLECTION_DOCTORS)
+        firestore.collection(Constants.COLLLECTION_DOCTORS_ACCEPTED)
         .document(doctorId).get()
 
     fun getAllDoctorsTimeSchedula(doctorId: String)=
@@ -87,13 +87,20 @@ class FirebaseSource @Inject constructor(
 
     fun getSpeiality()=
         firestore.collection(Constants.COLLLECTION_SPEIALITY)
+    fun getSearchSpeiality(query:String)=
+        firestore.collection(Constants.COLLLECTION_SPEIALITY)
+            .orderBy("name")
+            .startAt(query.trim())
+            .endAt(query.trim()+"\uF8FF")
+            .startAt(query.trim().toUpperCase())
+
 
     fun getDoctorsWithSpetilst(spetilist:String)=
-        firestore.collection(Constants.COLLLECTION_DOCTORS)
+        firestore.collection(Constants.COLLLECTION_DOCTORS_ACCEPTED)
             .whereEqualTo(NAME_FIELD_SPETIALTY,spetilist)
 
     fun getDoctorSearchByName(name:String)=
-        firestore.collection(Constants.COLLLECTION_DOCTORS)
+        firestore.collection(Constants.COLLLECTION_DOCTORS_ACCEPTED)
             .orderBy(NAME_FIELD_NAMEEN)
             .startAt(name.trim())
             .endAt(name.trim()+"\uF8FF")
@@ -188,7 +195,6 @@ class FirebaseSource @Inject constructor(
             .child("${auth.currentUser?.uid}/images/${UUID.randomUUID()}${Random.nextInt()}")
             val task=ref.putBytes(imgpitmap)
         var downloadUrl: String? = "soak"
-
         runBlocking {
             task.continueWithTask {
                 if (!it.isSuccessful) {

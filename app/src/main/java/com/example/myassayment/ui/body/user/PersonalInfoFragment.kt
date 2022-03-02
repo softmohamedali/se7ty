@@ -64,7 +64,7 @@ class PersonalInfoFragment : Fragment() {
         cleintInfo?.elchole=elcholeUser
         cleintInfo?.smoker=smokerUser
         client.info=cleintInfo
-        viewModel.saveUser(client)
+        viewModel.saveUser(client,null)
     }
 
     private fun setUpObservers() {

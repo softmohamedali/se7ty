@@ -37,7 +37,7 @@ class SpeitlityItemAdapter(
         holder.view.imgSpietialItem.load(speitalityList[position].img){
         }
         holder.view.tvNameSpietialItem.text=speitalityList[position].name
-        holder.view.tvNumDoctorSpietialItem.text="10"
+
         holder.itemView.setOnClickListener {
             itemListener.itembestSpeitalityClick(speitalityList[position].name!!)
         }

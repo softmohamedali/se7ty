@@ -30,6 +30,12 @@
         <action
             android:id="@+id/action_mainFragment_to_showBookingDetailsFragment"
             app:destination="@id/showBookingDetailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_covid19Fragment"
+            app:destination="@id/covid19Fragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_lapTestFragment"
+            app:destination="@id/lapTestFragment" />
     </fragment>
     <dialog
         android:id="@+id/accountFragment"
@@ -267,7 +273,9 @@
         tools:layout="@layout/fragment_locatons" >
         <action
             android:id="@+id/action_locatonsFragment_to_doctorInfoFragment"
-            app:destination="@id/doctorInfoFragment" />
+            app:destination="@id/doctorInfoFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/lapTestFragment"

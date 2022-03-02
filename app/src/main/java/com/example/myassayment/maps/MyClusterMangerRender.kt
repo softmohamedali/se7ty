@@ -3,6 +3,7 @@ package com.example.myassayment.maps
 import android.app.Activity
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -21,21 +22,18 @@ import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import com.google.maps.android.ui.IconGenerator
 import java.util.concurrent.atomic.AtomicInteger
-import android.graphics.Bitmap
-import androidx.test.core.app.ApplicationProvider
-import coil.Coil
-import com.bumptech.glide.request.animation.GlideAnimation
-
-import com.bumptech.glide.request.target.SimpleTarget
-
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 
 class MyClusterMangerRender(
     var context: Activity,
     map: GoogleMap,
-    clusterManger: ClusterManager<ClusterMarker>
+    clusterManger: ClusterManager<ClusterMarker>,
+    var imgListenr:MyClusterMangerRender.ImageListener
 ) : DefaultClusterRenderer<ClusterMarker>(context, map, clusterManger) {
     var iconGenerator:IconGenerator
     var img:ImageView
@@ -53,25 +51,59 @@ class MyClusterMangerRender(
     }
 
 
+
+
     override fun onClusterItemRendered(clusterItem: ClusterMarker, marker: Marker) {
-        super.onClusterItemRendered(clusterItem, marker)
-        Glide.with(context).load(clusterItem.doctor.photo).into(img)
-    }
-    override fun onBeforeClusterItemRendered(item: ClusterMarker, markerOptions: MarkerOptions) {
-        initImageSizeIfNeed()
+
+
+        Glide
+            .with(context)
+            .load(clusterItem.doctor.photo)
+            .listener(object :RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    imgListenr.imgStatus(true,"failed")
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    imgListenr.imgStatus(false,"success")
+                    return false
+                }
+
+            })
+            .into(img)
+            .clearOnDetach()
         val icon=iconGenerator.makeIcon()
-        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon)).title(item.title).snippet(item.snippet)
+        marker.setIcon(BitmapDescriptorFactory.fromBitmap(icon))
+        marker.isVisible=true
         icon.recycle()
+        super.onClusterItemRendered(clusterItem, marker)
     }
+
+
+    override fun onBeforeClusterItemRendered(item: ClusterMarker, markerOptions: MarkerOptions) {
+        super.onBeforeClusterItemRendered(item, markerOptions)
+    }
+
 
     override fun shouldRenderAsCluster(cluster: Cluster<ClusterMarker>): Boolean {
         return false
     }
 
-    private fun initImageSizeIfNeed() {
-
+    interface ImageListener{
+        fun imgStatus(status:Boolean,msg:String)
     }
-
 }
 
 

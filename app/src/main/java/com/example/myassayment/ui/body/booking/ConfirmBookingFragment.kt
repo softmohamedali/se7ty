@@ -18,6 +18,7 @@ import com.example.myassayment.models.Doctor
 import com.example.myassayment.models.TimeSchedule
 import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.utils.StatusResult
+import com.example.myassayment.viewmodels.AuthViewModel
 import com.example.myassayment.viewmodels.BookingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +28,7 @@ class ConfirmBookingFragment : Fragment() {
     private val binding get() = _binding!!
     private val navArgs by navArgs<ConfirmBookingFragmentArgs>()
     private val bookingViewModel by viewModels<BookingViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
     private lateinit var doctor:Doctor
     private lateinit var timeSelected:TimeSchedule
     override fun onCreateView(
@@ -60,6 +62,24 @@ class ConfirmBookingFragment : Fragment() {
                 }
             }
         })
+        authViewModel.isgetUser.observe(viewLifecycleOwner,{
+            when{
+                it is StatusResult.OnSuccess ->{
+                    binding.pbConfirmBooking.isVisible=false
+                    binding.floorConfirmfrag.isVisible=true
+                    bookingViewModel.bookDate(doctor,timeSelected,it.data!!)
+                }
+                it is StatusResult.OnError ->{
+                    binding.pbConfirmBooking.isVisible=false
+                    binding.floorConfirmfrag.isVisible=false
+                    Toast.makeText(requireActivity(), "${it.msg}", Toast.LENGTH_SHORT).show()
+                }
+                it is StatusResult.OnLoading ->{
+                    binding.pbConfirmBooking.isVisible=true
+                    binding.floorConfirmfrag.isVisible=true
+                }
+            }
+        })
     }
 
     private fun setUpView() {
@@ -73,7 +93,7 @@ class ConfirmBookingFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.fabConfirmConfirmfrag.setOnClickListener {
-            bookingViewModel.bookDate(doctor,timeSelected,)
+            authViewModel.getUserInfo()
         }
     }
 

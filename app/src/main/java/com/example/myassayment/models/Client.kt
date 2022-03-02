@@ -15,6 +15,7 @@ data class Client(
     var desease:String?="",
     var gender:String?="",
     var clientId:String?="",
-    var info:PersonalInfo?=PersonalInfo()
+    var info:PersonalInfo?=PersonalInfo(),
+    var img:String?=""
 ):Parcelable {
 }

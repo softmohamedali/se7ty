@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:layout_margin="30dp"
+    android:background="@color/white"
     android:elevation="40dp"
     android:layout_gravity="center">
 
@@ -17,20 +17,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_chek"
-        app:tint="@color/background_tool" />
+        app:srcCompat="@drawable/ic_warning"
+        app:tint="@color/warning" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tv_warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/success_booking_date"
-        android:textColor="@color/black"
+        android:text="@string/warning"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="@dimen/_18sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

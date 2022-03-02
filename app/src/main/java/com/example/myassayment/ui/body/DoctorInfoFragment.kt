@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
@@ -12,6 +13,8 @@ import com.example.myassayment.R
 import com.example.myassayment.databinding.FragmentDoctorInfoBinding
 import com.example.myassayment.databinding.FragmentMainBinding
 import com.example.myassayment.models.Doctor
+import com.example.myassayment.utils.MyUtils
+import com.example.myassayment.viewmodels.BookingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +23,7 @@ class DoctorInfoFragment : Fragment() {
     private val binding get() = _binding!!
     private val navargs by navArgs<DoctorInfoFragmentArgs>()
     private lateinit var doctor:Doctor
+    private  val bookingViewModel by viewModels<BookingViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,18 +46,23 @@ class DoctorInfoFragment : Fragment() {
         binding.followDoctorInfo.text="${doctor.priceFollowUp} $"
         binding.briefDoctorInfo.text=doctor.descriptionEn
         binding.bookBtnDoctorInfo.setOnClickListener {
-            val action=DoctorInfoFragmentDirections.actionDoctorInfoFragmentToBookDateFragment(doctor)
-            findNavController().navigate(action)
+            if (bookingViewModel.currntuser()==null){
+                MyUtils.toastwarningBooking(
+                    requireContext(),
+                    "You Should Login to get Permission to this operation"
+                )
+            }else{
+                val action=DoctorInfoFragmentDirections
+                    .actionDoctorInfoFragmentToBookDateFragment(doctor)
+                findNavController().navigate(action)
+            }
         }
         binding.btnBackDoctorinfo.setOnClickListener {
             findNavController().popBackStack()
         }
-
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
     }
-
 }

@@ -20,6 +20,7 @@ import com.example.myassayment.databinding.FragmentMainBinding
 import com.example.myassayment.models.Appointeiment
 import com.example.myassayment.models.Doctor
 import com.example.myassayment.models.Sevices
+import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.BookingViewModel
 import com.example.myassayment.viewmodels.HomeViewModel
@@ -129,12 +130,22 @@ class MainFragment :
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToDoctorInfoFragment(doctor))
     }
     override fun bookBtnClick(doctor: Doctor) {
-        findNavController().navigate(MainFragmentDirections.actionMainFragmentToBookDateFragment(doctor))
+        if (homeViewModel.currntuser()==null){
+            MyUtils.toastwarningBooking(
+                requireContext(),
+                "You Should Login to get Permission to this operation"
+            )
+        }else{
+            findNavController()
+                .navigate(MainFragmentDirections.actionMainFragmentToBookDateFragment(doctor))
+        }
     }
 
     override fun itemClick(services: Sevices, pos: Int) {
         if (pos==0){
-
+            findNavController().navigate(R.id.action_mainFragment_to_covid19Fragment)
+        }else if(pos==1){
+            findNavController().navigate(R.id.action_mainFragment_to_lapTestFragment)
         }else{
 
         }

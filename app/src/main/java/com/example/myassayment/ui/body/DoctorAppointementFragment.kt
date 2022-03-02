@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import com.example.myassayment.R
 import com.example.myassayment.adapters.SpeitlityItemAdapter
 import com.example.myassayment.databinding.FragmentDoctorAppointementBinding
 import com.example.myassayment.databinding.FragmentDoctorInfoBinding
+import com.example.myassayment.models.Speitality
 import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.DoctorAppointmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,16 +41,26 @@ class DoctorAppointementFragment : Fragment(),SpeitlityItemAdapter.SpitialItemCl
             findNavController().popBackStack()
         }
         binding.btnSpetilityAndrology.setOnClickListener {
-            navigateToDoctorList("eyes")
+            navigateToDoctorList("Andrology")
         }
         binding.btnSpetilityPediatrics.setOnClickListener {
-            navigateToDoctorList("eyes")
+            navigateToDoctorList("Pediatrics")
         }
         binding.btnSpetilityPsychiatry.setOnClickListener {
-            navigateToDoctorList("eyes")
+            navigateToDoctorList("Psychiatry")
         }
         binding.btnSpetilityDite.setOnClickListener {
-            navigateToDoctorList("eyes")
+            navigateToDoctorList("Diet and Nutriation")
+        }
+        binding.etSearchSpecialityDoctorapp.doOnTextChanged { text, start, before, count ->
+            if (text.isNullOrEmpty())
+            {
+                doctorAppViewModel.getSpeialits()
+                showSpContainer(true)
+            }else{
+                doctorAppViewModel.getSearchSpeialits(text.toString().trim().toString())
+                showSpContainer(false)
+            }
         }
         setUpRecy()
         doctorAppViewModel.getSpeialits()
@@ -55,6 +68,7 @@ class DoctorAppointementFragment : Fragment(),SpeitlityItemAdapter.SpitialItemCl
             when{
                 it is StatusResult.OnError ->{
                     Toast.makeText(requireContext(), "${it.msg}", Toast.LENGTH_SHORT).show()
+                    speialityAdapter.setData(mutableListOf())
                 }
                 it is StatusResult.OnLoading -> {
 
@@ -82,6 +96,15 @@ class DoctorAppointementFragment : Fragment(),SpeitlityItemAdapter.SpitialItemCl
 
     override fun itembestSpeitalityClick(mspeiality: String) {
         navigateToDoctorList(mspeiality)
+    }
+
+    fun showSpContainer(show:Boolean){
+        if (show)
+        {
+            binding.spContainer.visibility=View.VISIBLE
+        }else{
+            binding.spContainer.visibility=View.GONE
+        }
     }
 
     override fun onDestroy() {

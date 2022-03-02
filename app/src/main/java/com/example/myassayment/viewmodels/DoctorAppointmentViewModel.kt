@@ -21,6 +21,7 @@ class DoctorAppointmentViewModel @Inject constructor(
     var firebaseSource: FirebaseSource,
     application: Application
 ) :AndroidViewModel(application) {
+    fun currntuser()=firebaseSource.user()
     private var _speialits: MutableLiveData<StatusResult<MutableList<Speitality>>> = MutableLiveData()
     private var _doctorWSpetitlity: MutableLiveData<StatusResult<MutableList<Doctor>>> = MutableLiveData()
     private var _doctorSearchByName: MutableLiveData<StatusResult<MutableList<Doctor>>> = MutableLiveData()
@@ -44,6 +45,22 @@ class DoctorAppointmentViewModel @Inject constructor(
             _speialits.value=StatusResult.OnError("No Internet Connection")
         }
     }
+    fun getSearchSpeialits(query:String){
+        _speialits.value=StatusResult.OnLoading()
+        if (hasInternetConnection())
+        {
+            firebaseSource.getSearchSpeiality(query).addSnapshotListener { value, error ->
+                if (error==null){
+                    _speialits.value=MyUtils.handledata(value)
+                }else{
+                    _speialits.value=StatusResult.OnError("${error.message}")
+                }
+            }
+        }else{
+            _speialits.value=StatusResult.OnError("No Internet Connection")
+        }
+    }
+
      fun getDoctorWithSpetility(spetitlity:String){
         _doctorWSpetitlity.value=StatusResult.OnLoading()
         if (hasInternetConnection())

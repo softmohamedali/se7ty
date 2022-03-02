@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myassayment.R
@@ -27,7 +29,7 @@ import com.google.maps.android.clustering.ClusterManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LocatonsFragment : Fragment() {
+class LocatonsFragment : Fragment(),MyClusterMangerRender.ImageListener {
 
     //vars
     private var _binding: FragmentLocatonsBinding?=null
@@ -84,7 +86,7 @@ class LocatonsFragment : Fragment() {
     fun addMarkers(googleMap: GoogleMap, doctors: MutableList<Doctor>)
     {
         mClusterManger= ClusterManager(requireContext(),googleMap)
-        mMyClusterManagerRender= MyClusterMangerRender(requireActivity(),googleMap,mClusterManger)
+        mMyClusterManagerRender= MyClusterMangerRender(requireActivity(),googleMap,mClusterManger,this)
         mClusterManger.renderer=mMyClusterManagerRender
         googleMap.setOnMarkerClickListener(mClusterManger)
         mClusterManger.setOnClusterItemInfoWindowClickListener {
@@ -92,12 +94,12 @@ class LocatonsFragment : Fragment() {
             findNavController().navigate(action)
         }
         doctors.forEach {
-
-            val clusterMarker=ClusterMarker(
-                it
-            )
-            mClusterMarkers.add(clusterMarker)
-
+            if (!it.loc.isNullOrEmpty()){
+                val clusterMarker=ClusterMarker(
+                    it
+                )
+                mClusterMarkers.add(clusterMarker)
+            }
         }
         mClusterManger.addItems(mClusterMarkers)
         googleMap.setOnCameraIdleListener (mClusterManger)
@@ -107,5 +109,10 @@ class LocatonsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
+    }
+
+    override fun imgStatus(status: Boolean, msg: String) {
+//        binding.progressBar4.isVisible = !status
+        Log.d("mylog",msg)
     }
 }
