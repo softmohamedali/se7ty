@@ -13,13 +13,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.myassayment.R
 import com.example.myassayment.databinding.ActivityMainBinding
-import com.example.myassayment.utils.Constants
-import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.viewmodels.AuthViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
@@ -27,11 +23,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
     private lateinit var navController: NavController
+    private val ACCEPT_PAYMENT_REQUEST=10
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         navController = findNavController(R.id.fragmentContainerView)
         binding.bottomNavigationView.setupWithNavController(navController)
         var navhostFragment =
@@ -51,10 +48,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 navController.navigate(R.id.action_to_accountFragment)
             }
         }
+
     }
-
-
-
 
     override fun onDestinationChanged(
         controller: NavController,
@@ -108,4 +103,5 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         super.onDestroy()
         _binding = null
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.myassayment.ui.body.booking
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.example.myassayment.databinding.FragmentConfirmBookingBinding
 import com.example.myassayment.databinding.FragmentDateBinding
 import com.example.myassayment.models.Doctor
 import com.example.myassayment.models.TimeSchedule
+import com.example.myassayment.utils.Constants
 import com.example.myassayment.utils.MyUtils
 import com.example.myassayment.utils.StatusResult
 import com.example.myassayment.viewmodels.AuthViewModel
