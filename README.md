@@ -16,6 +16,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 - search
 - log out
 - notification
+- payment
 - and more ........
 
 ## Technology i used it
@@ -26,6 +27,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 - firebase firestory
 - firebase Auth
 - firebase fcm
+- paymob payment sdk integration
 - Navigation componnent
 - live data for easy state
 - state flow for complex state with fillter and map data
