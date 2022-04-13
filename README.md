@@ -63,7 +63,7 @@ The system consists of 3 applications 1 - for the user 2 - for the doctor 3 - fo
 <br/>
 <br/>
 
-<img src="payment.png" width="300"><img src="payment2.png" width="300"><img src="9.jpg" width="300">
+<img src="payment.png" width="300"><img src="Screenshot_1649865240.png.png" width="300">
 
 
 <br/>
